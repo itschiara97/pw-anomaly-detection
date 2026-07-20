@@ -1,0 +1,414 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.6.22)  29 JUN 2026 12:21
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/salvatore/Chiara/Tesi/PW_Anomaly_Detection/main
+(/home/salvatore/Chiara/Tesi/PW_Anomaly_Detection/main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(/usr/share/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@chapter=\count276
+\c@section=\count277
+\c@subsection=\count278
+\c@subsubsection=\count279
+\c@paragraph=\count280
+\c@subparagraph=\count281
+\c@figure=\count282
+\c@table=\count283
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+) (/usr/share/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2026/02/14 v26.3 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+\babel@savecnt=\count284
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2111.
+\U@D=\dimen149
+\l@unhyphenated=\language4
+ (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count285
+ (/usr/share/texmf-dist/tex/generic/babel/locale/it/babel-italian.tex)
+Package babel Info: Importing font and identification data for italian
+(babel)             from babel-it.ini. Reported on input line 4330.
+ (/usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
+Language: italian 2026/01/13 v.1.5.02 Italian support for the babel system
+\it@lettering=\count286
+\it@doublequoteactive=\count287
+\it@ISOcompliance=\count288
+)) (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count289
+) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+) (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen150
+\Gin@req@width=\dimen151
+) (/usr/share/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
+Package: newunicodechar 2018/04/08 v1.2 Defining Unicode characters
+) (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen152
+)) (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen153
+) (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count290
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count291
+\leftroot@=\count292
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count293
+\DOTSCASE@=\count294
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen154
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count295
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count296
+\dotsspace@=\muskip17
+\c@parentequation=\count297
+\dspbrk@lvl=\count298
+\tag@help=\toks21
+\row@=\count299
+\column@=\count300
+\maxfields@=\count301
+\andhelp@=\toks22
+\eqnshift@=\dimen155
+\alignsep@=\dimen156
+\tagshift@=\dimen157
+\tagwidth@=\dimen158
+\totwidth@=\dimen159
+\lineht@=\dimen160
+\@envbody=\toks23
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+) (/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count302
+) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Info: Redefining \it@ocap on input line 10.
+LaTeX Info: Redefining \it@ccap on input line 10.
+
+
+File italian.ldf warning: 
+italian.ldf    With OT1 encoding guillemets are poorly faked
+italian.ldf    Use T1 encoding
+italian.ldf    or specify a font with command \CaporaliFrom
+italian.ldf    See the documentation concerning the babel-italian typesetting
+italian.ldf    on input line 10.
+
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count303
+\scratchdimen=\dimen161
+\scratchbox=\box55
+\nofMPsegments=\count304
+\nofMParguments=\count305
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count306
+\MPscratchDim=\dimen162
+\MPnumerator=\count307
+\makeMPintoPDFobject=\count308
+\everyMPtoPDFconversion=\toks26
+) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) (./Capitolo_1.tex
+Capitolo 1.
+[1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<Sbilaciamento_delle_classi.png, id=14, 612.8496pt x 430.0065pt>
+File: Sbilaciamento_delle_classi.png Graphic file (type png)
+<use Sbilaciamento_delle_classi.png>
+Package pdftex.def Info: Sbilaciamento_delle_classi.png  used on input line 52.
+(pdftex.def)             Requested size: 276.00105pt x 193.65204pt.
+ [3 <./Sbilaciamento_delle_classi.png>]
+<Variabilita_dell_anomalia.png, id=20, 612.8496pt x 430.0065pt>
+File: Variabilita_dell_anomalia.png Graphic file (type png)
+<use Variabilita_dell_anomalia.png>
+Package pdftex.def Info: Variabilita_dell_anomalia.png  used on input line 66.
+(pdftex.def)             Requested size: 276.00105pt x 193.65204pt.
+<Soglia_fissa_adattiva.png, id=21, 612.8496pt x 430.0065pt>
+File: Soglia_fissa_adattiva.png Graphic file (type png)
+<use Soglia_fissa_adattiva.png>
+Package pdftex.def Info: Soglia_fissa_adattiva.png  used on input line 81.
+(pdftex.def)             Requested size: 276.00105pt x 193.65204pt.
+ [4 <./Variabilita_dell_anomalia.png>] [5 <./Soglia_fissa_adattiva.png>] [6] [7] [8] [9] [10]) (./Capitolo_2.tex [11] [12
+
+]
+Capitolo 2.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (147.93169pt too wide) in paragraph at lines 25--33
+ [][] 
+ []
+
+[13] [14]
+Overfull \hbox (9.43794pt too wide) in paragraph at lines 68--68
+[]\OT1/cmr/bx/n/14.4 L'Evoluzione dei me-to-di ba-sa-ti sul Deep Lear-
+ []
+
+[15] [16]
+Overfull \hbox (15.79312pt too wide) in paragraph at lines 142--142
+[]\OT1/cmr/bx/n/12 Metodi ba-sa-ti sul-la Rap-pre-sen-ta-zio-ne (Rapresentation-
+ []
+
+[17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 214--214
+[]\OT1/cmr/m/n/9 SIFT, HOG,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--214
+\OT1/cmr/m/n/9 LBP, GMM,
+ []
+
+
+Underfull \hbox (badness 2951) in paragraph at lines 214--214
+[]\OT1/cmr/m/n/9 Leggeri e in-ter-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+\OT1/cmr/m/it/9 sio-na-li-ty\OT1/cmr/m/n/9 ; non
+ []
+
+
+Underfull \hbox (badness 1540) in paragraph at lines 215--215
+[]\OT1/cmr/m/n/9 AE, VAE, Ano-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+\OT1/cmr/m/n/9 GAN, CA-V-GA,
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 215--215
+[]\OT1/cmr/m/n/9 Compressione e ri-co-stru-zio-ne.
+ []
+
+
+Underfull \hbox (badness 3635) in paragraph at lines 215--215
+[]\OT1/cmr/m/n/9 Intuitivi; buo-na
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+\OT1/cmr/m/n/9 lo-ca-liz-za-zio-ne
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
+[]\OT1/cmr/m/n/9 Generalizzazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
+\OT1/cmr/m/n/9 ec-ces-si-va sui
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]\OT1/cmr/bx/n/9 Normalizing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]\OT1/cmr/m/n/9 DifferNet,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+\OT1/cmr/m/n/9 CFlow-AD,
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 216--216
+[]\OT1/cmr/m/n/9 Mappatura biet-ti-va su cur-va
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
+[]\OT1/cmr/m/n/9 Addestramento
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 216--217
+\OT1/cmr/m/n/9 eso-so in ter-mi-ni
+ []
+
+
+Overfull \hbox (10.98526pt too wide) in paragraph at lines 217--217
+[]\OT1/cmr/bx/n/9 Rappresentazione| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+[]\OT1/cmr/m/n/9 Dipendenza dal
+ []
+
+
+Underfull \hbox (badness 3049) in paragraph at lines 217--218
+\OT1/cmr/m/n/9 do-mi-nio ori-gi-na-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+\OT1/cmr/m/n/9 rio (Ima-ge-Net);
+ []
+
+
+Underfull \hbox (badness 5345) in paragraph at lines 217--218
+\OT1/cmr/m/n/9 con-su-mo me-mo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]\OT1/cmr/m/n/9 CutPaste,
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 218--218
+\OT1/cmr/m/n/9 ta-zio-ne con loss
+ []
+
+
+Overfull \hbox (127.56493pt too wide) in paragraph at lines 210--221
+ [][] 
+ []
+
+
+Overfull \hbox (7.81808pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/10 2.3.  ANALISI CRITICA E SFIDE APERTE NELL'ANOMALY DETECTION \OT1/cmr/m/n/10 19
+ []
+
+[19] [20]) (./Capitolo_3.tex
+Overfull \hbox (7.81808pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/10 2.3.  ANALISI CRITICA E SFIDE APERTE NELL'ANOMALY DETECTION \OT1/cmr/m/n/10 21
+ []
+
+[21] [22
+
+]
+Capitolo 3.
+[23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34]) (./main.bbl [35] [36
+
+] [37] [38]
+Underfull \hbox (badness 1210) in paragraph at lines 118--121
+[]\OT1/cmr/m/n/10 Miryam Eli-za-beth Villa-P^^Serez, Mi-guel []A. []Alvarez-Carmona, Oc-ta-vio
+ []
+
+) [39] (./main.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 4227 strings out of 469504
+ 64558 string characters out of 5470379
+ 485326 words of memory out of 5000000
+ 32839 multiletter control sequences out of 15000+600000
+ 636939 words of font info for 74 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 57i,11n,65p,971b,361s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/salvatore/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (39 pages, 579240 bytes).
+PDF statistics:
+ 229 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+

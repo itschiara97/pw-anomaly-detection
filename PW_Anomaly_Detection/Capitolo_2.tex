@@ -1,0 +1,249 @@
+\chapter{Stato dell'Arte}
+La visual anomaly detection rappresenta uno dei pilastri fondamentali e maggiormente sfidanti dell'apprendimento automatico e della computer vision.
+
+A differenza dei sistemi di apprendimento tradizionali, che operano in contesti statici e chiusi, i modelli di AD nascono per gestire l'incertezza intrinseca degli ambienti dinamici e aperti, con l'obiettivo di riuscire ad estrarre, caratterizzare e modelare i pattern unicamente dai dati normali disponibili, sfruttando questa conoscenza pregressa per identificare gli elementi sconosciuti, ovvero le anomalie.\cite{Yang_et_al._2021}\cite{Cui_et_al._2023}
+
+Questo paradigma trova ampie applicazioni nel mondo reale, suddivise principalmente in tre grandi macro-aree\cite{Yang_et_al._2021}:
+\begin{enumerate}
+    \item \textbf{Intelligent Manufacturing:} ispezione delle superfici e controllo qualità automatizzato per identificare i difetti di produzione.
+    \item \textbf{Medical Image Analysis:} supporto alle diagnosi mediante l'individuazione automatica di lesioni, masse tumorali o anomalie dei tessuti.
+    \item \textbf{Intelligent Security e Video Surveillance:} rilevamento di eventi rari, incidenti o comportamenti sospetti nei flussi stradali o nella sorveglianza pubblica.
+\end{enumerate}
+
+\subsection{Classificazione per Granularità}
+Come citato nel capitolo 1, la letteratura scientifica suddivide i metodi visivi in due categorie principali, in base alla risoluzione spaziale e alla granularità richiesta dall'output \cite{Yang_et_al._2021}:
+\begin{itemize}
+    \item \textbf{Image-level Detection:} il modello esprime un giudizio binario o un punteggio (\textit{anomaly score}) riferito all'intera immagine, indicando se contenga o meno un'anomalia.
+    \item \textbf{Pixel-level Detection:} il modello esegue una segmentazione dell'immagine assegnando a ciascun pixel un punteggio di anomalia così da generare una mappa di calore (\textit{anomaly map}).
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Tassonomia dei metodi di Visual Anomaly Detection (AD) per dominio e paradigma di apprendimento.}
+\label{tab:taxonomy}
+\begin{tabular}{l|l|l}
+\hline
+\textbf{Dominio} & \textbf{Paradigma di Apprendimento} & \textbf{Architetture e Approcci Principali} \\ \hline
+\textbf{Image Domain} & Unsupervised Learning & CAEs, GANs, Student-Teacher, Normalizing Flows \\
+                      & Self / Semi-Supervised Learning & SVDD, Approcci basati su feature geometriche \\ \hline
+\textbf{Video Domain} & Unsupervised Learning & Spatio-Temporal CAEs, GANs, Modelli Ibridi (CNN+LSTM) \\
+                      & Weakly Supervised Learning & Multiple Instance Learning, CNN pre-addestrate \\ \hline
+\end{tabular}
+\end{table}
+    
+L'evoluzione tecnologica ha vissuto una netta divisione con l'avvento del Deep Learning. I metodi si sono evoluti attraverso tre principali approcci all'addestramento \cite{Cui_et_al._2023}:
+\begin{itemize}
+    \item Supervised Learning: richiede un dataset bilanciato ed etichettato sia con campioni normali che con tutte le possibili classi di difetti.
+    \item Unsupervised Learning: rappresenta lo standard \textit{de facto} della disciplina, addestrando il modello esponendolo solo a campioni privi di difetti.
+    \item Weakly Supervised Learning: utilizza etichette a livello di video o gruppo di immagini, senza specificare in quale frame o pixel fosse l'anomalia.
+\end{itemize} 
+
+\section{L'era del Pre-Deep Learning}
+Prima della diffusione delle reti neurali, la computer vision si affidava ad una pipeline sequenziale a due stadi: l'estrazione di feature artigianali (\textit{handcrafted features}) seguita da un classificatore o stimatore statistico superficiale.\cite{Yang_et_al._2021}
+
+I vettori più utilizzati si basavano su variazioni geometriche, fotometriche e di texture locali:
+\begin{itemize}
+    \item \textbf{Descrittori di apparenza e istogrammi}: lo \textit{Scale-Invariant Feature Transform (SIFT)} per l'estrazione di punti di interessi invarianti alla scala, gli \textit{Histograms of Oriented Gradients (HOG)} per catturare le informazioni strutturali e i contorni visivi e i \textit{Local Binary Patterns (LBP} per la codifica locale delle trame di texture superficiali.\cite{Yang_et_al._2021}\cite{Lian_et_al._2023}
+    \item \textbf{Metodi Basati su Filtri e Trasformate:} l'applicazione di banchi di filtri energetici come gli operatori di Canny e Sobel, i filtri di Gabor e le trasformate sequenziali di Fourier e Waveket per l'analisi energetica delle risposte spaziali e isolare le discontinuità.\cite{Tran_et_al._2022}
+\end{itemize}
+
+Una volta estratti i descrittori locali, i meccanismi decisionali si dividevano in tre principali filoni:\cite{Yang_et_al._2021}
+\begin{enumerate}
+    \item \textbf{Stima di densità parametrica e non parametrica} 
+
+    La modellazione della distribuzione dei dati avviene tramite modelli misti gaussiani (GMM) o stimatori di Kernel della densità (KDE). Se la probabilità logaritmica di un campione di test risulta inferiore ad una certa soglia, viene classificato come anomalo.
+
+    \item \textbf{One-Class Classification (OCSVM e SVDD)}
+
+    Utilizza tecniche geometriche volte a mappare le feature in uno spazio a dimensionalità superiore per definire un confine decisionale ottimale attorno alla sola classe normale.
+
+    \item\textbf{Modello temporali e di contesto}
+
+    Vengono utilizzati i Campi Aleatori di Markov (MRF) per combinare i descrittori visivi con le variazioni dinamiche calcolate tramite flussi ottici locali (HOF).
+\end{enumerate}
+
+Questi approcci, però, soffrivano pesantemente della \textit{"Curse of dimensionality"} quando applicati direttamente a immagini ad alta risoluzione. Inoltre, la loro natura non end-to-end impediva l'ottimizzazione congiunta delle feature e del criterio di rilevamento, limitando la robustezza algoritmica difronte a rumore di fondo, variazioni di illuminazione e ombre complesse.\cite{Yang_et_al._2021}
+
+\section{L'Evoluzione dei metodi basati sul Deep Learning}
+
+L'integrazione del Deep Learning ha consentito di superae i limiti strutturali delle feature manuali, consentendo l'estrazione automatica di rappresentazioni semantiche multilivello. Inoltre, con il successo delle CNN, l'attenzione si concentrata su come sfruttare la loro capacità di astrazione per sviluppare approcci end-to-end.
+I metodi moderni di AD non supervisionata si articolano in cinque principali famiglie.\cite{Cui_et_al._2023}
+
+\subsection{Metodi basati sulla Ricostruzione (Reconstruction-based)}
+Il concetto principale si fonda sul concetto di compressione ridondante della conoscenza. Il modello viene addestrato a mappare un'immagine normale in uno spazio a bassa dimensionalità per poi tentare di ricostruire l'input originale tramite un percorso inverso.\cite{Yang_et_al._2021}
+
+L'assunto alla base del modello è che questo non essendo mai stato esposto alle anomalie durante il training, non sarà in possesso di coefficienti necessari per descriverle, generando un errore di ricostruzione elevato quando sono presenti dei difetti.
+
+\begin{itemize}
+    \item \textbf{Formule Chiave}
+    Nella pipeline basate su autoencoder e misure strutturali come lo \textit{Structural Similarity Index (SSIM)}, l'anomaly score spaziale, viene misurato combinando la distanza euclidea dei pixel e la consistenza strutturale locale:\cite{Lian_et_al._2023}\cite{Yang_et_al._2021}
+
+    $$\mathcal{L}_{\text{rec}}(x, \hat{x}) = (1 - \alpha) \cdot \| x - \hat{x} \|_{2} + \alpha \cdot (1 - \text{SSIM}(x, \hat{x}))$$
+
+    Nei modelli generativi avanzati come ad esempio \textbf{AnoGAN}, la ricerca dell'immagine normale più vicina richiede un'ottimizzazione iterativa nello spazio latente \textit{z}. 
+    La funzione di perdita per aggiornare il vettore latente unisce la perdita di embedding residua e la discriminazione delle feature estratte da un livello intermedio del discriminatore ($D_\lambda$):\cite{Yang_et_al._2021}
+
+    $$\mathcal{L}_{\text{AnoGAN}}(z_{\gamma}) = (1 - \lambda) \cdot \| x - G(z_{\gamma}) \|_{1} + \lambda \cdot \| D_{\lambda}(x) - D_{\lambda}(G(z_{\gamma})) \|_{1}$$
+
+    \item\textbf{Evoluzioni e varianti}
+    Nel tempo i metodi sono stati soggetti a studi che hanno portato alla loro evoluzione e alla definizione di varianti degli stessi. In particolare:
+
+    \begin{itemize}
+        \item \textbf{CAVGA (Constrained Adversarial Variational General Architecture)}
+
+         Introduce meccanismi di attenzione visiva integrati tramite mappe Grad-CAM per costringere la rete a coprire l'intera area normale dell'immagine, bloccando contemporaneamente le risposte sulle aree esterne.
+
+        \item \textbf{DFR (Deep Feature Reconstruction)}
+
+        Sposta il processo di ricostruzione dallo spazio dei pixel a quello delle feature multilivello estratte da CNN pre-addestrate, riducendo i falsi positivi su bordi complessi.
+    \end{itemize}
+
+    Bisogna sottolineare che sebbene i modelli puramente ricostruttivi siano intuitivi e precisi nella localizzazione spaziale, possono generalizzare in modo eccessivo, riuscendo a ricostruire parzialmente anche le anomalie visive, invalidando l'ipotesi di partenza.\cite{Cui_et_al._2023}
+
+\end{itemize}
+
+
+
+\subsection{Metodi basati sui flussi di normalizzazione (Normalizing Flow-Based}
+
+I Normalizing Flow sono architetture potenti capaci di apprendere trasformazioni matematiche biettive e invertibili tra la complessa distribuzione visiva delle immagini e una funzione di densità di probabilità semplice e nota.
+
+Durante la fase di training, il modello punta a massimizzare la verosomiglianza logaritmica dei campioni normali. Nella fase di test, invece, l'immagine viene elaborata dalla rete e la densità di probabilità risultante funge direttamente da punteggio di anomalia (più bassa è la probabilità calcolata, più è alta la probabilità che si tratti di un difetto).\cite{Cui_et_al._2023}
+
+
+\begin{itemize}
+    \item\textbf{Fomule Chiave}
+    Alla base del metodo c'è il teorema del cambiamento di variabili. Se $Z=f(x)$ è la mappatura verso lo spazio latente Gaussiano, la densità di probabilità di un campione x si calcola considerando il determinante della matrice Jacobiana $(J_f)$ della trasformazione:
+    \[
+    p(x) = p(f(x)) \cdot | \det J_f(x) |
+    \]
+
+    In fase di training, la rete massimizza la log-verosomiglianza sui dati normali: 
+    \[
+    \text{Log}(p(x)) = \text{Log}(p(f(x))) + \text{Log}(| \det J_f(x) |)
+    \]
+
+    \item \textbf{Evoluzioni e varianti}
+    Nel tempo, lo studio del metodo ha portato evoluzioni dello stesso e lo sviluppo di varianti, come:
+
+    \begin{itemize}
+        \item \textbf{DifferNet}
+        Considerato uno dei primi modelli ad applicare i NF all'ispezione visiva, estraendo delle feature multi-scala per la classificazione a livello di immagini.
+
+        \item\textbf{CFlow-AD (Conditional Flow)}
+        Il modello introduce blocchi di flussi condizionali per elaborare le piramidi di feature, abilitando la localizzazione del difetto a livello di singolo pixel.
+
+        \item \textbf{FastFlow}
+        Questo modello risolve un limite enorme rispetto i precedenti che, per poter processare i dati, dovevano appiattire la matrice dell'immagine in un vettore 1D, distruggendo le relazioni spaziali. FastFlow utilizza reti convoluzionali 2D per i flussi, preservando le vicinanze strutturali dei pixel e migliorando la precisione.\cite{Cui_et_al._2023}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Metodi basati sulla Rappresentazione (Rapresentation-based}
+
+In questa categoria metodologica viene esclusa la complessa fase di addestramento deep del modello. Vengono impiegate reti neurali pre-addestrate esclusivamente come estrattori potenti di descrittori visivi \textit{(feature extractor)}. L'anomaly score si ricava calcolando le distanze geometriche statistiche tra il vettore di test e l'insieme di vettori normali presenti in memoria.\cite{Cui_et_al._2023}
+
+\begin{itemize}
+    \item\textbf{Formule Chiave}
+    Gli algoritmi appartenenti a questa categoria superano la semplice distanza euclidea, utilizzando delle metriche statistiche che considerando la varianza. Per un patch (una specifica regione dell'immagine), l'anomalia viene calcolata utilizzando la distanza di Mahalanobis:
+
+    \[
+    D_M(x) = \sqrt{(x - \mu)^T \Sigma^{-1} (x - \mu)}
+    \]
+
+  Dove $x$ è la feature in esame, $\mu$ è il vettore medio calcolato sulle immagini normali in quella specifica posizione nello spazio, e $\Sigma^{-1}$ è la matrice di covarianza inversa.
+
+    \item \textbf{Evoluzioni e Varianti}
+    Gli studi, dopo la definizione di questo metodo, hanno portato a diversi sviluppi, che hanno definito più varianti, tra le principali troviamo:
+    \begin{itemize}
+        \item\textbf{SPADE}
+        Estrae piramidi di feature e utilizza un classificatore KNN per cercare i vettori normali più simili per ogni singolo pixel. Risulta molto preciso ma esecutivamente lento data la ricerca dettagliata.\cite{Yang_et_al._2021}
+
+        \item\textbf{PaDiM (Patch Distribution Modeling)}
+        Modella la distribuzione delle patch tramite Gaussiane Multivariate per calcolare la distanza in modo efficiente senza necessariamente richidere una ricerca KNN continua.\cite{Cui_et_al._2023}
+
+        \item \textbf{PatchCore}
+        Attualmente, viene considerato lo stato dell'arte  in ambito industriale. Raccoglie le feature in una \textit{Memory Bank}, ma comprimendo l'archivio così da poter mantenere i FPS elevati senza saturare la RAM. Per far ciò utilizza un algoritmo che salva solo le feature essenziali, ovvero il \textit{greedy coreset subsampling}.
+
+        \item \textbf{CFA (Coupled-hypersphere-based Feature Adaptation}
+        Supera il problema del "bias" delle reti pre-addestrate usando il transfer learning per adattare le feature estratte al dominio specifico, proiettandole su ipersfere matematiche.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Metodi basati sulla Data Augmentation}
+
+I metodi non supervisionati sono caratterizzati da un training con assenza totale di immagini anomali, per questo, questi algoritmi puntano a "fabbricare" difetti sintesici manipolando le immagini normali. Questo fa si che l'Anomaly Detection si trasformi in un compito \textit{self-supervised} di segmentazione: il modello viene quindi allenato a trovare le false anomalie inserite dal programmatore.\cite{Cui_et_al._2023}
+
+\begin{itemize}
+    \item \textbf{Formule Chiave}
+    I modelli appena definiti utilizzando le funzioni di perdita classiche della segmentazione supervisionata per separare i pixel veri da quelli alterati.
+    \[
+    \text{Loss}_{\text{Segmentazione}} = - \left[ y \cdot \log(p) + (1 - y) \cdot \log(1 - p) \right]
+    \]
+
+    Dove \[y\] è la maschera binaria del difetto finto (1 se è presente l'anomalia, 0 se l'immagine è sana) e \[p\] è la previsione della rete.
+
+    \item \textbf{Evoluzione e Varianti}
+    Anche questo metodo presenta più evoluzioni dello stesso. 
+
+    \begin{itemize}
+        \item \textbf{CutPaste}
+        La logica ritaglia in modo casuale piccole zone dell'immagine sana \textit{(cropping)}, applica variazioni di colore o rotazioni, e le incolla in un altro punto dell'immagine. Un classificatore viene poi addestrato a riconscere se l'immagine è autentica o "incollata".\cite{Cui_et_al._2023}
+
+        \item \textbf{DREAM}
+        Genera maschere di rumore da sovrapporre come texture. Vengono addestrate due reti simultaneamente: una per ricostruire l'immagine pulita e un discriminatore per tracciare i bordi del difetto simulato.
+
+        \item \textbf{NSA (Natural Synthetic Anomalies}
+        Questo metodo taglia patch da immagini differenti e le fonde in campioni sani utilizzando algoritmi di \textit{Poisson image editing}, simulando irregolarità strutturali con sfumature decisamente realistiche.
+            
+    \end{itemize}
+\end{itemize}
+
+Di seguito viene presentata un'analisi comparativa dei macro-approcci descritti, evidenziandone vantaggi e svantaggi sulla base di tre criteri principali: tempo di inferenza, consumo di memoria e accuratezza della localizzazione.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Confronto riepilogativo delle principali famiglie di metodi per la Visual Anomaly Detection.}
+\label{tab:metodi_ad}
+\renewcommand{\arraystretch}{1.3} % Aumenta leggermente lo spazio tra le righe
+\begin{tabular}{p{2.5cm} p{2.5cm} p{4.5cm} p{2.5cm} p{2.5cm}}
+\hline
+\textbf{Categoria} & \textbf{Modelli Esempio} & \textbf{Concetto Base} & \textbf{Vantaggi} & \textbf{Svantaggi} \\ 
+\hline
+\textbf{Pre-Deep Learning} & SIFT, HOG, LBP, GMM, OCSVM & Estrazione feature manuali + modelli statistici/geometrici. & Leggeri e interpretabili. & \textit{Curse of dimensionality}; non end-to-end. \\ 
+\textbf{Ricostruzione} & AE, VAE, AnoGAN, CAVGA, DFR & Compressione e ricostruzione. L'errore segna l'anomalia. & Intuitivi; buona localizzazione spaziale. & Generalizzazione eccessiva sui difetti. \\ 
+\textbf{Normalizing Flow} & DifferNet, CFlow-AD, FastFlow & Mappatura biettiva su curva Gaussiana; stima di probabilità. & Base matematica stabile; inferenza veloce. & Addestramento esoso in termini di VRAM. \\ 
+\textbf{Rappresentazione} & SPADE, PaDiM, PatchCore, CFA & Estrazione feature da reti pre-addestrate e confronto distanze. & Altissime prestazioni; nessun training profondo. & Dipendenza dal dominio originario (ImageNet); consumo memoria. \\ 
+\textbf{Data Augmentation} & CutPaste, DRAEM, NSA & Sintesi di difetti artificiali e task \textit{self-supervised}. & Facile implementazione con loss classiche. & Difficoltà a replicare la fisica dei difetti reali. \\ 
+\hline
+\end{tabular}
+\end{table}
+
+\section{Analisi critica e sfide aperte nell'Anomaly Detection}
+
+Nonostante l'introduzione delle architetture del Deep Learning abbiamo contribuito a rivoluzionare le prestazioni dei sistemi della Visual Anomaly Detection, il passaggio dagli ambienti di laboratorio ai contesti applicativi reali presenta ancora degli ostacoli significativi.
+La letteratura più recente, dopo un'analisi critica ha evidenziato come l'AD in ambito industriale sia frenata da problematiche che vanno oltre la pura precisione algoritmica, coinvolgendo l'acquisizione dei dati, la robustezza ambientale e l'integrazione hardware.\cite{Alzarooni_et_al._2024}\cite{Li_et_al._2025}
+
+Di seguito vengono analizzate le principali sfide ancora aperte che guidano la scena attuale della ricerca scientifica.
+
+\subsection{Il "Bias" di Dominio e l'Adattamento delle Feature}
+Attualmente, i metodi considerati allo stato dell'arte per l'applicazione industriale, come ad esempio quelli basati sulla Rappresentazione, si affidano principalmente a reti neutrali pre-addestrate su dataset generici di grandi dimensioni, come ImageNet.\cite{Roth_et_al._2022}
+Nonostante questa strategia risolva il problema del \textbf{cold-start}, ovvero riesca ad addestrare una rete profonda solo con campioni normali, introduce un forte "bias di dominio".\cite{Li_et_al._2025}
+Le \textit{feature} estratte dalle immagini naturali, spesso non possiedono la granularità necessaria per riuscire a descrivere in modo ottimale le micro-strutture di una texture industriale o le imperfezioni di un macchinario ad altra precisione; questa dipendenza rende necessario sviluppare nuove tecniche di \textit{transfer learning} e di adattamento al dominio non supervisionato, capaci di sintonizzare i descrittori sulle specifiche peculiarità del task senza invalidare le prestazioni del modello.\cite{Li_et_al._2025}
+
+
+\subsection{Scalabilità Computazionale ed Edge Computing}
+L'integrazione dei sistemi di rilevamento delle anomalie nelle linee di produzione reali impone spesso l'adozione di paradigmi di \textit{Edge Computing}. In questi casi, gli algoritmi devono essere eseguiti direttamente su dispositivi periferici, quali telecamere smart o nodi IoT, strutturalmente penalizzati da stringenti vincoli in termini di memoria e capacità di calcolo. \cite{Morshedi_et_al._2025}
+Il contrasto tra la necessità operativa e i requisiti hardware delle architetture visive, anche le più performanti, genera colli di bottiglia che non si adattano alla produzione in tempo reale. Ad esempio, i modelli basati sulla memorizzazione delle caratteristiche, come PatchCore, sebbene utilizzano strategie di compressione, richiedono comunque l'archiviazione e la consultazione di enormi \textit{Memory Bank} di campioni nominali per riuscire a calcolare i punteggi dell'anomalia in fase di test.\cite{Roth_et_al._2022}
+Anche l'implementazione del Deep Learning in contesti IoT contribuisce ad introdurre severe criticità legate principalmente all'efficienza energetica e alla latenza decisionale; di conseguenza, l'ottimizzazione strutturale dei modelli e lo sviluppo di nuove soluzioni \textit{Lightweight Deep Learning} rimangono cruciali per colmare il divario tra efficacia teorica e applicabilità industriale.\cite{Morshedi_et_al._2025}
+
+\subsection{Ambienti Dinamici e Continual Anomaly Detection}
+Generalmente, il paradigma della VAD presuppone un ambiente statico, ovvero, il modello apprende una singola definizione di "normalità" che rimane invariata per tutta la durata dell'inferenza. Tuttavia, nel mondo reale i dati sono soggetti a \textit{Concept Drift}: cambiano le condizioni di illuminazione, l'usura dell'hardware, o anche variazioni concettuali del desing del prodotto.
+Di fronte a questa realtà, i modelli statici perdono calibrazione, generando un numero terribilmente elevato di falsi positivi.\cite{Faber_et_al._2026} 
+La letteratura, per far fronte a queste criticità sta convergendo verso la \textit{Continual Anomaly Detection}, con l'obiettivo di sviluppare dei sistemi in grado di aggiornare in modo incrementale la propria conoscenza della normalità in flussi dati continui, mitigando così la perdita drastica delle informazioni acquisite in precedenza \textit{(catastrophic forgetting)} durante le fasi di ri-addestramento.\cite{Faber_et_al._2026}
+
+\subsection{Prospettiva Zero-Shot e i Foundation Models}
+L'acquisizione di ampi set di dati normali risulta impraticabile in scenari di produzione altamente personalizzati o per piccoli lotti, per questo la ricerca si sta muovendo verso un approccio tendente alla \textit{Zero-Shot Anomaly Detection}.
+Gli sviluppi più recenti, in particolare, esplorano l'utilizzo di modelli multi-modali molto potenti definiti \textit{Foundation Models}, per rilevare le anomalie senza alcun addestramento specifico sul dominio.\cite{Wan_et_al._2026} 
+Architetture emergenti, come il framework DCS, dimostrano la possibilità di integrare modelli visivo-linguistici per identificare e segmentare difetti complessi guidando l'attenzione della rete attraverso prompt testuali, riducendo così in modo drastico, i costi di setup e introducendo ispezioni industriali generalizzabili.\cite{Wan_et_al._2026}
