@@ -29,5 +29,5 @@
       ]
     }
   ],
-  "latex-workshop.latex.recipe.default": "first"
+  "latex-workshop.latex.recipe.default": "pdflatex -> bibtex -> pdflatex*2"
 }

@@ -1,0 +1,13 @@
+# File di build e log LaTeX
+*.aux
+*.log
+*.bbl
+*.blg
+*.synctex.gz
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Configurazione IDE locale
+.vscode/
