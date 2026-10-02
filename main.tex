@@ -1,7 +1,15 @@
 \documentclass{book}
 \usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
 \usepackage[italian]{babel}
 \usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
 \usepackage{newunicodechar}
 \usepackage{amsmath}
 \usepackage{amssymb, amsfonts}
@@ -12,10 +20,10 @@
 \input{Capitolo_1}
 \input{Capitolo_2}
 \input{Capitolo_3}
+\input{Capitolo_4}
+\input{Capitolo_5}
 
 
 \bibliographystyle{plain}
 \bibliography{reference}
 \end{document}
-
-

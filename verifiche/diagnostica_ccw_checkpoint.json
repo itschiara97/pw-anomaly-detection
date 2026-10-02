@@ -1,0 +1,213 @@
+{
+  "created_utc": "2026-10-02T13:10:06.864598+00:00",
+  "authorization": "User approved diagnostic only; no training or official prediction rerun",
+  "scope": "12 patches 128x128 from first three normal test images; CPU only",
+  "checkpoint_sha256": "fbcbd37d508ea2e3ef46866427bd4a1f6a06ebd4ace8d53785fbd0c15713a38d",
+  "verifier_sha256": "e28ffe0879fdb3a9e3753ecd68232654a541096706cae52b95ff95fc518fd948",
+  "tensorflow": "2.15.0",
+  "artifact_evidence": {
+    "result_sha256": "211e1a15253458b691ac4a9d8f2bf99093ea7e9438d9a30aeb011f735263328a",
+    "training_manifest_sha256": "0c52ab14175f42754ddfc6887bc19e50ae9372999a3807bbacf394a80a279f78",
+    "prediction_manifest_sha256": "5f239dd6f1040d86106c724795310ff59989c73d11dbd3a2477ae4b4c718ab76",
+    "maps_sha256": "0025006e40c0b6d2346eb8c3cd58ed2faff4cd90052884ca21de59d2bde08f5b",
+    "runtime_differences": {
+      "training": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      },
+      "prediction": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      },
+      "evaluation": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      }
+    },
+    "training_budget": {
+      "epochs": 200,
+      "initial_epoch": 0,
+      "optimizer_updates_this_run": 49000,
+      "optimizer_updates_total": 49000,
+      "patches_per_source_image_per_epoch": 64,
+      "sampled_area_per_source_image": 1.0,
+      "source_image_passes_total": 200,
+      "steps_per_epoch": 245,
+      "wall_clock_seconds": 22446.500619385
+    }
+  },
+  "patches": [
+    {
+      "image": "good/000.png",
+      "image_sha256": "64609f35b4b8c88daf42fcc9c34d359d160ea9b88ac8c537a5a8e672b813c18a",
+      "top_left_yx": [
+        0,
+        0
+      ],
+      "input_L_mean_Lab_units": 35.51856121531503,
+      "output_L_mean_Lab_units": 32.60527479670599,
+      "raw_L_rmse_Lab_units": 4.159837935150959,
+      "flipped_L_rmse_Lab_units": 69.10101991674844,
+      "ab_rmse_normalized": 0.01907662725748441
+    },
+    {
+      "image": "good/000.png",
+      "image_sha256": "64609f35b4b8c88daf42fcc9c34d359d160ea9b88ac8c537a5a8e672b813c18a",
+      "top_left_yx": [
+        448,
+        448
+      ],
+      "input_L_mean_Lab_units": 35.60330203106458,
+      "output_L_mean_Lab_units": 32.380258416623484,
+      "raw_L_rmse_Lab_units": 4.123588304710018,
+      "flipped_L_rmse_Lab_units": 68.86392648692963,
+      "ab_rmse_normalized": 0.019567544761024763
+    },
+    {
+      "image": "good/000.png",
+      "image_sha256": "64609f35b4b8c88daf42fcc9c34d359d160ea9b88ac8c537a5a8e672b813c18a",
+      "top_left_yx": [
+        896,
+        896
+      ],
+      "input_L_mean_Lab_units": 32.50404575228172,
+      "output_L_mean_Lab_units": 31.896746115160425,
+      "raw_L_rmse_Lab_units": 2.254180214827271,
+      "flipped_L_rmse_Lab_units": 65.07081775269937,
+      "ab_rmse_normalized": 0.014971095687298949
+    },
+    {
+      "image": "good/000.png",
+      "image_sha256": "64609f35b4b8c88daf42fcc9c34d359d160ea9b88ac8c537a5a8e672b813c18a",
+      "top_left_yx": [
+        128,
+        640
+      ],
+      "input_L_mean_Lab_units": 35.58826316842422,
+      "output_L_mean_Lab_units": 32.44506760551538,
+      "raw_L_rmse_Lab_units": 4.164978340450588,
+      "flipped_L_rmse_Lab_units": 68.90980720637762,
+      "ab_rmse_normalized": 0.02085452817228221
+    },
+    {
+      "image": "good/001.png",
+      "image_sha256": "2f4333a152e75287ad36fee6b285e8a31dde7e66de77529e4af9386fbdf27ffa",
+      "top_left_yx": [
+        0,
+        0
+      ],
+      "input_L_mean_Lab_units": 38.29834178343452,
+      "output_L_mean_Lab_units": 32.364991769908876,
+      "raw_L_rmse_Lab_units": 6.65338839032914,
+      "flipped_L_rmse_Lab_units": 71.48537265024049,
+      "ab_rmse_normalized": 0.02623624019737384
+    },
+    {
+      "image": "good/001.png",
+      "image_sha256": "2f4333a152e75287ad36fee6b285e8a31dde7e66de77529e4af9386fbdf27ffa",
+      "top_left_yx": [
+        448,
+        448
+      ],
+      "input_L_mean_Lab_units": 33.99520166720456,
+      "output_L_mean_Lab_units": 32.44604719386954,
+      "raw_L_rmse_Lab_units": 3.3172829573696494,
+      "flipped_L_rmse_Lab_units": 67.37076065447346,
+      "ab_rmse_normalized": 0.017795861190569195
+    },
+    {
+      "image": "good/001.png",
+      "image_sha256": "2f4333a152e75287ad36fee6b285e8a31dde7e66de77529e4af9386fbdf27ffa",
+      "top_left_yx": [
+        896,
+        896
+      ],
+      "input_L_mean_Lab_units": 31.438787509988785,
+      "output_L_mean_Lab_units": 31.821579186399582,
+      "raw_L_rmse_Lab_units": 2.0783041342411486,
+      "flipped_L_rmse_Lab_units": 63.90454146701295,
+      "ab_rmse_normalized": 0.01489380365055595
+    },
+    {
+      "image": "good/001.png",
+      "image_sha256": "2f4333a152e75287ad36fee6b285e8a31dde7e66de77529e4af9386fbdf27ffa",
+      "top_left_yx": [
+        128,
+        640
+      ],
+      "input_L_mean_Lab_units": 36.846637073998714,
+      "output_L_mean_Lab_units": 32.40097094054,
+      "raw_L_rmse_Lab_units": 5.313019753189034,
+      "flipped_L_rmse_Lab_units": 69.978369080644,
+      "ab_rmse_normalized": 0.023986991395899132
+    },
+    {
+      "image": "good/002.png",
+      "image_sha256": "45cf969cea93fc721fb409709608dc66c469aaf72d9ee83fd79eb22aa4a3d1df",
+      "top_left_yx": [
+        0,
+        0
+      ],
+      "input_L_mean_Lab_units": 38.61928733166341,
+      "output_L_mean_Lab_units": 32.1524774901142,
+      "raw_L_rmse_Lab_units": 7.0254905166829245,
+      "flipped_L_rmse_Lab_units": 71.69363070342929,
+      "ab_rmse_normalized": 0.02707214684759828
+    },
+    {
+      "image": "good/002.png",
+      "image_sha256": "45cf969cea93fc721fb409709608dc66c469aaf72d9ee83fd79eb22aa4a3d1df",
+      "top_left_yx": [
+        448,
+        448
+      ],
+      "input_L_mean_Lab_units": 36.17338671846463,
+      "output_L_mean_Lab_units": 32.757289083341625,
+      "raw_L_rmse_Lab_units": 4.496938355844862,
+      "flipped_L_rmse_Lab_units": 69.98806025658081,
+      "ab_rmse_normalized": 0.021036374595555334
+    },
+    {
+      "image": "good/002.png",
+      "image_sha256": "45cf969cea93fc721fb409709608dc66c469aaf72d9ee83fd79eb22aa4a3d1df",
+      "top_left_yx": [
+        896,
+        896
+      ],
+      "input_L_mean_Lab_units": 31.368129280839554,
+      "output_L_mean_Lab_units": 31.94284448416122,
+      "raw_L_rmse_Lab_units": 2.3166793655966105,
+      "flipped_L_rmse_Lab_units": 63.97378731222398,
+      "ab_rmse_normalized": 0.015657631999059004
+    },
+    {
+      "image": "good/002.png",
+      "image_sha256": "45cf969cea93fc721fb409709608dc66c469aaf72d9ee83fd79eb22aa4a3d1df",
+      "top_left_yx": [
+        128,
+        640
+      ],
+      "input_L_mean_Lab_units": 38.522510457688206,
+      "output_L_mean_Lab_units": 32.611702028012346,
+      "raw_L_rmse_Lab_units": 6.6175712914387415,
+      "flipped_L_rmse_Lab_units": 72.01893963338615,
+      "ab_rmse_normalized": 0.027352419163213064
+    }
+  ],
+  "structural_loss_raw": 0.15351889796011672,
+  "structural_loss_flipped_L": 0.15351889796011672,
+  "structural_sign_difference": 0.0,
+  "total_training_loss": 0.1535273264541986,
+  "normalized_ab_mse": 0.00044806934586996217,
+  "training_color_penalty_mse_div_45": 9.957096574888048e-06,
+  "inference_color_penalty_equivalent_10_mse_before_spatial_averaging": 0.004480693458699622,
+  "weight_ratio_inference_to_training": 450,
+  "total_minus_structural": 8.428494081863525e-06,
+  "limitations": "No full-image reconstruction, performance metric, gradient comparison or causal ablation"
+}

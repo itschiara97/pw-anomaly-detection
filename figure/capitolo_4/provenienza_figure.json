@@ -1,0 +1,340 @@
+{
+  "scope": "Visualization and descriptive analysis of the archived leather run; no retraining.",
+  "strict_current_audit": "Fails on the recorded versus current Linux platform; historical reports are not overwritten.",
+  "selection_rule": "000.png for each defect type; normal image with highest CCW-SSIM maximum; first CCW-SSIM false negative in the type with most false negatives.",
+  "selected_images": {
+    "color": "color/000.png",
+    "cut": "cut/000.png",
+    "fold": "fold/000.png",
+    "glue": "glue/000.png",
+    "poke": "poke/000.png",
+    "good": "good/030.png",
+    "missed_defect": "glue/001.png"
+  },
+  "panels": {
+    "color": "leather_color_000",
+    "cut": "leather_cut_000",
+    "fold": "leather_fold_000",
+    "glue": "leather_glue_000",
+    "poke": "leather_poke_000",
+    "good": "leather_good_030",
+    "missed_defect": "leather_glue_001"
+  },
+  "evidence": {
+    "CCW-SSIM": {
+      "result_sha256": "211e1a15253458b691ac4a9d8f2bf99093ea7e9438d9a30aeb011f735263328a",
+      "training_manifest_sha256": "0c52ab14175f42754ddfc6887bc19e50ae9372999a3807bbacf394a80a279f78",
+      "prediction_manifest_sha256": "5f239dd6f1040d86106c724795310ff59989c73d11dbd3a2477ae4b4c718ab76",
+      "maps_sha256": "0025006e40c0b6d2346eb8c3cd58ed2faff4cd90052884ca21de59d2bde08f5b",
+      "runtime_differences": {
+        "training": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "prediction": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "evaluation": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        }
+      },
+      "training_budget": {
+        "epochs": 200,
+        "initial_epoch": 0,
+        "optimizer_updates_this_run": 49000,
+        "optimizer_updates_total": 49000,
+        "patches_per_source_image_per_epoch": 64,
+        "sampled_area_per_source_image": 1.0,
+        "source_image_passes_total": 200,
+        "steps_per_epoch": 245,
+        "wall_clock_seconds": 22446.500619385
+      }
+    },
+    "PaDiM": {
+      "result_sha256": "e90e7f342e6a9911fd8505d858808b2df41faf31c0334496a72fb254e870cd08",
+      "training_manifest_sha256": "6bf65507e2d6ffbc1380c3e8d769e8331e06c227329b8c936f193d891d21a085",
+      "prediction_manifest_sha256": "6eae2e9217a56ad5464275144d85ffbcd72b28032cc7a6ea880a306dac4286ce",
+      "maps_sha256": "abaa1862279653973d95c43fb0a5f6b5f530d546f452d38ab1b121c56143c582",
+      "runtime_differences": {
+        "training": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "prediction": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "evaluation": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        }
+      },
+      "training_budget": {
+        "epochs": null,
+        "optimizer_updates_total": 0,
+        "source_image_passes_total": 1,
+        "training_images": 245,
+        "wall_clock_seconds": 13.898026541000036
+      }
+    },
+    "RD4AD": {
+      "result_sha256": "a92a70ead2b98109dc52c81dfc55e0c1757d735d6d26717456bd9d787e87dfcb",
+      "training_manifest_sha256": "0d37af66b09481cf98de9247f3e8ae09f715f6d37bbee955be9f17bf44263ec9",
+      "prediction_manifest_sha256": "65df2749f27036a254d8166f5ae8c58b7bd1cdbf5a4a3b0aa7e7d8183513c497",
+      "maps_sha256": "53c18d7b1251ea57cf3b5b4dece4cfbfc2aa685c602b0d37332086c6238b6f10",
+      "runtime_differences": {
+        "training": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "prediction": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "evaluation": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        }
+      },
+      "training_budget": {
+        "epochs": 200,
+        "optimizer_updates_total": 3200,
+        "source_image_passes_total": 200,
+        "steps_per_epoch": 16,
+        "training_images": 245,
+        "wall_clock_seconds": 523.628829395002
+      }
+    },
+    "FastFlow": {
+      "result_sha256": "e13228b1f6748660cde528e1276607072390512c65d4ec5f3af5707a818ef3b4",
+      "training_manifest_sha256": "f4129f0aa4ccce3d129b650561ce914849f80acf4a828ee9d6b0165f3e0e0c8f",
+      "prediction_manifest_sha256": "cafa179c855bd934745e9d4da8199fca1538098ffffc6c32827321a33d626dd2",
+      "maps_sha256": "7575fe848fd2d8cf1ccd4541add5ce1a459ed0b81ca0ad0a68daadc6920be3bd",
+      "runtime_differences": {
+        "training": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "prediction": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        },
+        "evaluation": {
+          "platform": {
+            "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+            "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+          }
+        }
+      },
+      "training_budget": {
+        "epochs": 200,
+        "optimizer_updates_total": 6200,
+        "source_image_passes_total": 200,
+        "steps_per_epoch": 31,
+        "training_images": 245,
+        "wall_clock_seconds": 687.5988222489977
+      }
+    }
+  },
+  "diagnostics": {
+    "CCW-SSIM": {
+      "groups_at_global_image_test_oracle": {
+        "color": {
+          "images": 19,
+          "fn_image": 2,
+          "fp_image": 0
+        },
+        "cut": {
+          "images": 19,
+          "fn_image": 1,
+          "fp_image": 0
+        },
+        "fold": {
+          "images": 17,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "glue": {
+          "images": 19,
+          "fn_image": 4,
+          "fp_image": 0
+        },
+        "poke": {
+          "images": 18,
+          "fn_image": 1,
+          "fp_image": 0
+        },
+        "good": {
+          "images": 32,
+          "fn_image": 0,
+          "fp_image": 9
+        }
+      },
+      "false_positive_images": [
+        "good/007.png",
+        "good/011.png",
+        "good/012.png",
+        "good/013.png",
+        "good/014.png",
+        "good/021.png",
+        "good/029.png",
+        "good/030.png",
+        "good/031.png"
+      ],
+      "false_negative_images": [
+        "color/003.png",
+        "color/004.png",
+        "cut/010.png",
+        "glue/001.png",
+        "glue/004.png",
+        "glue/009.png",
+        "glue/010.png",
+        "poke/014.png"
+      ],
+      "pixel_f1_recomputed_at_saved_threshold": 0.3840067324667722,
+      "sampled_map_min": 0.10454495251178741,
+      "sampled_map_max": 1.0517104864120483
+    },
+    "PaDiM": {
+      "groups_at_global_image_test_oracle": {
+        "color": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "cut": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "fold": {
+          "images": 17,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "glue": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "poke": {
+          "images": 18,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "good": {
+          "images": 32,
+          "fn_image": 0,
+          "fp_image": 0
+        }
+      },
+      "false_positive_images": [],
+      "false_negative_images": [],
+      "pixel_f1_recomputed_at_saved_threshold": 0.4243448121088198,
+      "sampled_map_min": 6.565112590789795,
+      "sampled_map_max": 51.484886169433594
+    },
+    "RD4AD": {
+      "groups_at_global_image_test_oracle": {
+        "color": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "cut": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "fold": {
+          "images": 17,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "glue": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "poke": {
+          "images": 18,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "good": {
+          "images": 32,
+          "fn_image": 0,
+          "fp_image": 0
+        }
+      },
+      "false_positive_images": [],
+      "false_negative_images": [],
+      "pixel_f1_recomputed_at_saved_threshold": 0.49809104258443465,
+      "sampled_map_min": 0.07924725860357285,
+      "sampled_map_max": 1.3694586753845215
+    },
+    "FastFlow": {
+      "groups_at_global_image_test_oracle": {
+        "color": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "cut": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "fold": {
+          "images": 17,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "glue": {
+          "images": 19,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "poke": {
+          "images": 18,
+          "fn_image": 0,
+          "fp_image": 0
+        },
+        "good": {
+          "images": 32,
+          "fn_image": 0,
+          "fp_image": 0
+        }
+      },
+      "false_positive_images": [],
+      "false_negative_images": [],
+      "pixel_f1_recomputed_at_saved_threshold": 0.6160624311593353,
+      "sampled_map_min": -0.7290254831314087,
+      "sampled_map_max": -0.0
+    }
+  }
+}

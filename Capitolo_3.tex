@@ -1,4 +1,5 @@
 \chapter[Modelli selezionati e implementazione]{Modelli selezionati e implementazione sperimentale}
+\label{chap:implementazione}
 
 Il presente capitolo descrive i quattro modelli selezionati per il progetto --- \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow} --- distinguendo, per ciascuno di essi, i principi metodologici dall'effettiva implementazione adottata. Le descrizioni implementative fanno quindi riferimento al codice, alle configurazioni e agli artefatti presenti nel repository del progetto.
 
@@ -21,7 +22,7 @@ I quattro approcci rappresentano pertanto modalità differenti di costruire un m
 
 \subsection{Ruolo dei modelli nel progetto}
 
-L'implementazione adotta uno scenario \textit{one-class}, comunemente ricondotto alla Visual Anomaly Detection non supervisionata: la fase di adattamento utilizza esclusivamente immagini prive di difetti, mentre le immagini normali e anomale della partizione di test sono impiegate soltanto nella successiva fase di inferenza.
+L'implementazione adotta lo scenario \textit{one-class} definito nel Capitolo~\ref{chap:introduzione}: la fase di adattamento utilizza esclusivamente immagini prive di difetti. Le immagini normali e anomale della partizione di test sono elaborate nella successiva fase di inferenza; le etichette e le maschere dei difetti sono utilizzate per la valutazione, secondo il protocollo illustrato nel capitolo dedicato ai risultati.
 
 Il termine \textit{addestramento} assume un significato diverso nei quattro casi. Per CCW-SSIM, RD4AD e FastFlow indica l'ottimizzazione di parametri neurali. Per PaDiM indica invece la stima delle statistiche gaussiane sulle feature normali, senza aggiornare il backbone. Tale differenza viene esplicitata nelle sezioni dedicate, evitando di attribuire a tutti i modelli la medesima procedura di ottimizzazione.
 
@@ -30,7 +31,7 @@ Il termine \textit{addestramento} assume un significato diverso nei quattro casi
 
 \subsection{Organizzazione del repository e pipeline di esecuzione}
 
-Il repository è organizzato in quattro directory principali, denominate \texttt{CCW-SSIM}, \texttt{PaDiM}, \texttt{RD4AD} e \texttt{FastFlow}. Ogni directory contiene un punto di ingresso \texttt{Main.py}, una configurazione dedicata e i moduli per caricamento dei dati, costruzione del modello, adattamento e inferenza. Il notebook \texttt{pipeline\_tesi.ipynb} coordina l'esecuzione delle pipeline mantenendo separati gli ambienti dei modelli.
+Il repository comprende una directory per ciascun modello: \texttt{CCW-SSIM}, \texttt{PaDiM}, \texttt{RD4AD} e \texttt{FastFlow}. Ogni directory contiene un punto di ingresso \texttt{Main.py}, una configurazione dedicata e i moduli per caricamento dei dati, costruzione del modello, adattamento e inferenza. Il notebook \texttt{pipeline\_tesi.ipynb} coordina l'esecuzione tramite \texttt{uv run}; per training e prediction di CCW-SSIM seleziona anche l'extra \texttt{ccw\_train}, che contiene le dipendenze TensorFlow.
 
 Il dataset è conservato nella directory centrale \texttt{MVTec\_Data}. Le directory locali dei modelli vi accedono mediante collegamenti simbolici, così da evitare copie divergenti dei dati. L'esecuzione comune è articolata nelle seguenti fasi:
 \begin{itemize}
@@ -42,20 +43,20 @@ Il dataset è conservato nella directory centrale \texttt{MVTec\_Data}. Le direc
 
 Il modulo \texttt{experiment\_protocol.py} registra manifesti e impronte dei file impiegati, rendendo esplicite la configurazione e la provenienza degli artefatti. Questa organizzazione separa il codice specifico dei modelli dal protocollo condiviso.
 
-% TODO: informazione da verificare — registrare il commit o la versione della sorgente originaria delle implementazioni CCW-SSIM, PaDiM e RD4AD; per il porting FastFlow è documentato il commit Anomalib 889a67f5.
+I manifesti identificano i sorgenti locali mediante SHA-256. Per FastFlow è inoltre documentato il commit Anomalib \texttt{889a67f5}. Non è registrato un commit originario equivalente per gli altri tre porting: la tracciabilità riguarda pertanto il codice locale effettivamente utilizzato, non una provenienza upstream ricostruita a posteriori.
 
 \subsection{Ambiente software e hardware}
 
-Gli ambienti registrati nei manifesti del progetto utilizzano Linux su architettura \texttt{x86\_64} e Python~3.11.15. CCW-SSIM è implementato con TensorFlow~2.15 e Keras~2.15, mentre PaDiM, RD4AD e FastFlow utilizzano PyTorch~2.13.0 e Torchvision~0.28. Le configurazioni rilevate sono riassunte nella Tabella~\ref{tab:cap3-ambienti}.
+Gli ambienti registrati nei manifesti del progetto utilizzano Linux su architettura \texttt{x86\_64} e Python~3.11.15. CCW-SSIM è implementato con TensorFlow~2.15 e le API Keras, mentre PaDiM, RD4AD e FastFlow utilizzano PyTorch~2.13.0 e Torchvision~0.28. Le configurazioni rilevate sono riassunte nella Tabella~\ref{tab:cap3-ambienti}.
 
 \begin{table}[htbp]
     \centering
     \small
-    \begin{tabular}{|p{2.3cm}|p{3.2cm}|p{4.6cm}|}
+    \begin{tabularx}{\textwidth}{|P{2.3cm}|Y|Y|}
         \hline
         \textbf{Modello} & \textbf{Framework} & \textbf{Supporto GPU registrato} \\
         \hline
-        CCW-SSIM & TensorFlow 2.15, Keras 2.15 & CUDA 12.2, cuDNN 8 \\
+        CCW-SSIM & TensorFlow 2.15, API Keras & CUDA 12.2, cuDNN 8 \\
         \hline
         PaDiM & PyTorch 2.13.0, Torchvision 0.28 & CUDA 13.0 \\
         \hline
@@ -63,16 +64,14 @@ Gli ambienti registrati nei manifesti del progetto utilizzano Linux su architett
         \hline
         FastFlow & PyTorch 2.13.0, Torchvision 0.28 & CUDA 13.0 \\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Ambienti software registrati per le implementazioni.}
     \label{tab:cap3-ambienti}
 \end{table}
 
 Le dipendenze condivise comprendono NumPy~1.26.4, OpenCV~4.11.0, Pillow~12.3, SciPy~1.17.1, scikit-image~0.26 e scikit-learn~1.9. La gestione dell'ambiente radice è definita dai file \texttt{pyproject.toml} e \texttt{uv.lock}. I manifesti indicano l'impiego di una GPU NVIDIA GeForce RTX~4070~Ti.
 
-% TODO: informazione da verificare — documentare il modello di CPU e la quantità di RAM effettivamente disponibili durante le esecuzioni sperimentali.
-% TODO: informazione da verificare — documentare la versione del driver NVIDIA e la memoria GPU effettivamente disponibile e occupata durante le esecuzioni.
-% TODO: informazione da verificare — definire i requisiti hardware minimi e consigliati per la riproduzione completa della pipeline.
+I manifesti non registrano modello della CPU, quantità di RAM, versione del driver NVIDIA o picco di memoria GPU. Queste informazioni non vengono dedotte dall'hardware corrente né usate per formulare requisiti minimi di riproduzione. Le versioni CUDA e cuDNN riportate descrivono il supporto rilevato dal framework, non la versione del driver.
 
 \subsection{Dataset MVTec AD e categoria leather}
 
@@ -80,7 +79,7 @@ MVTec AD \cite{Bergmann_et_al._2019} raccoglie immagini industriali ad alta riso
 
 Per tale categoria, la partizione \texttt{train/good} contiene 245 immagini normali. La partizione di test contiene 124 immagini: 32 normali e 92 appartenenti alle tipologie di difetto \texttt{color}, \texttt{cut}, \texttt{fold}, \texttt{glue} e \texttt{poke}. Per le immagini difettose sono disponibili 92 maschere nella directory \texttt{ground\_truth}. La medesima organizzazione dei dati è condivisa da tutte le implementazioni.
 
-% TODO: informazione da verificare — stabilire se la sperimentazione definitiva debba essere estesa ad altre categorie MVTec AD e, in tal caso, registrare le relative configurazioni.
+% Il perimetro dell'elaborato è limitato a leather; altre categorie costituiscono eventuali sviluppi futuri.
 
 \subsection{Gestione di configurazioni, checkpoint e artefatti}
 
@@ -105,7 +104,7 @@ La discrepanza non è calcolata esclusivamente nello spazio RGB: il modello comb
 
 \subsubsection{S-CIELAB e CW-SSIM}
 
-La trasformazione S-CIELAB converte l'immagine RGB nello spazio XYZ, separa l'informazione in canali opponenti e applica filtri spaziali differenti alle componenti di luminanza e crominanza. Dopo la riconversione in CIELAB si ottengono i canali $L^*$, $a^*$ e $b^*$, nei quali la distanza cromatica tiene conto della diversa sensibilità del sistema visivo umano alle frequenze spaziali.
+La trasformazione S-CIELAB converte l'immagine RGB nello spazio XYZ, separa l'informazione in canali opponenti e applica filtri spaziali differenti alle componenti di luminanza e crominanza. Dopo la riconversione in CIELAB si ottengono i canali $L^*$, $a^*$ e $b^*$. Il filtraggio tiene conto della diversa sensibilità del sistema visivo umano alle frequenze spaziali \cite{Berasi_2023}.
 
 La componente strutturale è calcolata su coefficienti complessi ottenuti mediante una piramide steerable. Per due insiemi locali di coefficienti $c_x$ e $c_y$, la CW-SSIM può essere espressa come
 \begin{equation}
@@ -137,11 +136,25 @@ Il preprocessing converte RGB in XYZ mediante scikit-image, applica la trasforma
 
 La perdita configurata combina la CW-SSIM sul primo canale Lab con l'errore cromatico sui canali $a^*$ e $b^*$. La piramide complessa usa sei scale e sei orientazioni, mentre la finestra locale ha lato 7. I checkpoint sono salvati ogni dieci epoche.
 
+La forma cromatica locale non coincide con la distanza euclidea descritta nella fonte. Indicando con $e_{ab}$ l'errore quadratico medio dei due canali già divisi per 102, il codice di training utilizza
+\begin{equation}
+ e_{ab}=\frac{(a-\widehat a)^2+(b-\widehat b)^2}{2},\qquad
+ C_{\mathrm{train}}=1-\frac{\langle e_{ab}\rangle}{45},\qquad
+ \mathcal L=\left\langle 1-S_{\mathrm{CW}}C_{\mathrm{train}}\right\rangle.
+\end{equation}
+La media cromatica è calcolata sul batch e sulle coordinate spaziali. Nella fonte, invece, la componente è espressa tramite $\Delta E=\sqrt{(a^*-\widehat a^*)^2+(b^*-\widehat b^*)^2}$ e un parametro $k$ \cite{Berasi_2023}. La pipeline locale mantiene la combinazione moltiplicativa di struttura e colore, ma costituisce una variante implementativa e non una traduzione letterale della metrica pubblicata.
+
 \subsubsection{Inferenza e salvataggio degli artefatti}
 
 La modalità attiva nella pipeline esegue l'inferenza \textit{patchwise}. Ogni immagine è suddivisa in patch $256\times256$ con stride di 16 pixel; le ricostruzioni sovrapposte sono ricomposte mediante media. La suddivisione del carico è controllata dal parametro \texttt{BatchSplits}, impostato a 25.
 
-La mappa locale combina la componente cromatica con la CW-SSIM calcolata a più altezze della piramide e su sei orientazioni. Il codice conserva inoltre l'inversione del primo asse Lab prevista dalla convenzione storica del decoder. Le ricostruzioni, i checkpoint HDF5, la cronologia CSV, il manifesto JSON e le mappe TIFF costituiscono gli artefatti della pipeline. La funzione sperimentale per la predizione dell'intera immagine è presente nel codice, ma non è selezionata dalla configurazione utilizzata.
+La mappa locale media la CW-SSIM alle altezze 7, 8 e 9 della piramide, su sei orientazioni, e applica alla componente cromatica una media spaziale $7\times7$. Indicando tale media con $\mathcal A_7$, il punteggio salvato è
+\begin{equation}
+ R=1-\overline S_{\mathrm{CW}}\left(1-10\mathcal A_7(e_{ab})\right).
+\end{equation}
+Il coefficiente cromatico è quindi diverso da quello del training: 10 anziché $1/45$, un rapporto pari a 450. Differiscono anche la modalità di media e le altezze della piramide. Il codice non forza il punteggio nell'intervallo $[0,1]$ prima del salvataggio.
+
+La configurazione applica inoltre l'inversione del primo canale Lab ricostruito mediante \texttt{InvertFirstLabAxis=True}. La sua presenza è accertata, ma non dimostra una necessità del decoder; il test diagnostico discusso nel Capitolo~\ref{chap:risultati} verifica separatamente questo punto. La pipeline registra checkpoint HDF5, cronologia CSV, manifesti JSON e mappe TIFF; la ricostruzione è calcolata in memoria per produrre la mappa. La funzione sperimentale per la predizione dell'intera immagine è presente nel codice, ma non è selezionata dalla configurazione utilizzata.
 
 \section{PaDiM}
 \label{sec:cap3-padim}
@@ -152,7 +165,7 @@ La mappa locale combina la componente cromatica con la CW-SSIM calcolata a più 
 
 PaDiM, acronimo di \textit{Patch Distribution Modeling}, descrive ogni posizione dell'immagine mediante feature estratte a più livelli da una rete convoluzionale pre-addestrata \cite{Defard_et_al._2021}. Le rappresentazioni dei livelli iniziali mantengono maggiore dettaglio spaziale, mentre quelle più profonde codificano informazioni semantiche più astratte. L'allineamento spaziale e la concatenazione producono un vettore $z_{i,j}$ per ogni posizione $(i,j)$.
 
-Il backbone rimane congelato: ImageNet fornisce una inizializzazione generica dell'estrattore, mentre la distribuzione normale specifica del dominio viene stimata sulle immagini MVTec AD.
+Il backbone rimane congelato: ImageNet fornisce un'inizializzazione generica dell'estrattore, mentre la distribuzione normale specifica del dominio viene stimata sulle immagini MVTec AD.
 
 \subsubsection{Modellazione gaussiana locale}
 
@@ -223,7 +236,6 @@ Nel modulo OCBE, la prima feature viene ridotta spazialmente con due convoluzion
 
 Il codice definisce anche una convoluzione $1\times1$ denominata \texttt{conv4}, che non è richiamata nel metodo \texttt{forward} della configurazione corrente e non viene pertanto considerata parte del percorso effettivo.
 
-% TODO: informazione da verificare — predisporre e inserire una figura dell'architettura RD4AD coerente con i moduli effettivamente eseguiti nel repository.
 
 \subsubsection{Addestramento di OCBE e decoder}
 
@@ -303,7 +315,7 @@ La Tabella~\ref{tab:cap3-configurazioni} riassume le configurazioni effettivamen
 \begin{table}[htbp]
     \centering
     \small
-    \begin{tabular}{|p{1.6cm}|p{3.4cm}|p{2.0cm}|p{2.6cm}|}
+    \begin{tabularx}{\textwidth}{|P{1.7cm}|Y|P{2.1cm}|Y|}
         \hline
         \textbf{Modello} & \textbf{Rappresentazione} & \textbf{Input e batch} & \textbf{Adattamento su MVTec AD} \\
         \hline
@@ -315,9 +327,11 @@ La Tabella~\ref{tab:cap3-configurazioni} riassume le configurazioni effettivamen
         \hline
         FastFlow & Wide ResNet-50-2 ImageNet congelata e flussi addestrabili & $256\times256$, batch 8 & 200 epoche, sole immagini normali \\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Sintesi delle configurazioni implementative presenti nel repository.}
     \label{tab:cap3-configurazioni}
 \end{table}
 
-Ne consegue che l'indicazione di ImageNet deve essere riferita unicamente al pre-addestramento dei backbone di PaDiM, RD4AD e FastFlow. Il dataset specifico della pipeline descritta nel capitolo è MVTec AD, nella categoria \texttt{leather}; per CCW-SSIM esso costituisce anche l'unica sorgente dei dati usati per apprendere i parametri del modello.
+ImageNet interviene quindi nel pre-addestramento dei backbone di PaDiM, RD4AD e FastFlow. L'adattamento specifico delle quattro pipeline utilizza invece MVTec AD, nella categoria \texttt{leather}; per CCW-SSIM, questa è anche l'unica sorgente dei dati usati per apprendere i parametri.
+
+Le configurazioni condividono i dati e il protocollo di valutazione, ma mantengono differenze di risoluzione, rappresentazione e ottimizzazione. Il confronto successivo riguarda pertanto le pipeline nelle condizioni documentate. L'analisi quantitativa ne misurerà la capacità di rilevamento e localizzazione, mentre l'esame delle mappe permetterà di descrivere risposte incomplete, diffuse o presenti nelle regioni normali. Le conclusioni resteranno riferite al caso di studio, distinguendo le osservazioni dalle ipotesi sulle loro cause.

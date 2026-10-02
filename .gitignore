@@ -11,3 +11,7 @@
 
 # Configurazione IDE locale
 .vscode/
+
+# Cache Python degli script di supporto
+__pycache__/
+*.py[cod]

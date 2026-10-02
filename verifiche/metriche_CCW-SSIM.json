@@ -1,0 +1,1731 @@
+{
+  "model": "CCW-SSIM",
+  "verified_utc": "2026-10-02T13:07:39.295330+00:00",
+  "method": "Shared archived evaluator on all 124 full-resolution maps; no model execution",
+  "verifier_sha256": "017d250cdf33bfb73a0e91c787c8338510370c252c1815da7a0c6000806bc9c7",
+  "provenance": {
+    "result_sha256": "211e1a15253458b691ac4a9d8f2bf99093ea7e9438d9a30aeb011f735263328a",
+    "training_manifest_sha256": "0c52ab14175f42754ddfc6887bc19e50ae9372999a3807bbacf394a80a279f78",
+    "prediction_manifest_sha256": "5f239dd6f1040d86106c724795310ff59989c73d11dbd3a2477ae4b4c718ab76",
+    "maps_sha256": "0025006e40c0b6d2346eb8c3cd58ed2faff4cd90052884ca21de59d2bde08f5b",
+    "runtime_differences": {
+      "training": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      },
+      "prediction": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      },
+      "evaluation": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      }
+    },
+    "training_budget": {
+      "epochs": 200,
+      "initial_epoch": 0,
+      "optimizer_updates_this_run": 49000,
+      "optimizer_updates_total": 49000,
+      "patches_per_source_image_per_epoch": 64,
+      "sampled_area_per_source_image": 1.0,
+      "source_image_passes_total": 200,
+      "steps_per_epoch": 245,
+      "wall_clock_seconds": 22446.500619385
+    }
+  },
+  "evaluation_protocol": {
+    "pixel_metric_stride": 4,
+    "image_score_aggregation": "max",
+    "threshold_protocol": "test_oracle_f1_max",
+    "image_f1_thresholds": "exact_unique_scores",
+    "pixel_f1_threshold_count": 500,
+    "serialized_curve_max_points": 4096
+  },
+  "metric_checks": {
+    "au_pro": {
+      "archived": 0.8864071285352806,
+      "recomputed": 0.8864071285352806,
+      "absolute_difference": 0.0
+    },
+    "classification_au_roc": {
+      "archived": 0.8991168478260869,
+      "recomputed": 0.8991168478260869,
+      "absolute_difference": 0.0
+    },
+    "segmentation_au_roc": {
+      "archived": 0.970687179202862,
+      "recomputed": 0.970687179202862,
+      "absolute_difference": 0.0
+    },
+    "f1_max_image": {
+      "archived": 0.9081081081081082,
+      "recomputed": 0.9081081081081082,
+      "absolute_difference": 0.0
+    },
+    "f1_max_pixel": {
+      "archived": 0.3840067324667722,
+      "recomputed": 0.3840067324667722,
+      "absolute_difference": 0.0
+    },
+    "precision_image": {
+      "archived": 0.9032258064516129,
+      "recomputed": 0.9032258064516129,
+      "absolute_difference": 0.0
+    },
+    "recall_image": {
+      "archived": 0.9130434782608695,
+      "recomputed": 0.9130434782608695,
+      "absolute_difference": 0.0
+    },
+    "precision_pixel": {
+      "archived": 0.3704357340769109,
+      "recomputed": 0.3704357340769109,
+      "absolute_difference": 0.0
+    },
+    "recall_pixel": {
+      "archived": 0.3986098978312887,
+      "recomputed": 0.3986098978312887,
+      "absolute_difference": 0.0
+    },
+    "optimal_threshold_image": {
+      "archived": 0.06308716178574154,
+      "recomputed": 0.06308716178574154,
+      "absolute_difference": 0.0
+    },
+    "optimal_threshold_pixel": {
+      "archived": 0.24849699398797592,
+      "recomputed": 0.24849699398797592,
+      "absolute_difference": 0.0
+    },
+    "fpr_at_tpr95_image": {
+      "archived": 0.53125,
+      "recomputed": 0.53125,
+      "absolute_difference": 0.0
+    },
+    "score_min_raw": {
+      "archived": 0.33970439434051514,
+      "recomputed": 0.33970439434051514,
+      "absolute_difference": 0.0
+    },
+    "score_max_raw": {
+      "archived": 1.0691652297973633,
+      "recomputed": 1.0691652297973633,
+      "absolute_difference": 0.0
+    },
+    "map_score_min_raw": {
+      "archived": 0.10454495251178741,
+      "recomputed": 0.10454495251178741,
+      "absolute_difference": 0.0
+    },
+    "map_score_max_raw": {
+      "archived": 1.0691652297973633,
+      "recomputed": 1.0691652297973633,
+      "absolute_difference": 0.0
+    }
+  },
+  "map_diagnostics": [
+    {
+      "image": "color/000.png",
+      "maximum": 0.5038051009178162,
+      "minimum": 0.12142635881900787,
+      "maximum_yx": [
+        608,
+        705
+      ],
+      "max_border_distance": 318,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/001.png",
+      "maximum": 0.39305469393730164,
+      "minimum": 0.11516645550727844,
+      "maximum_yx": [
+        419,
+        1020
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/002.png",
+      "maximum": 0.3915444612503052,
+      "minimum": 0.12062028795480728,
+      "maximum_yx": [
+        840,
+        690
+      ],
+      "max_border_distance": 183,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/003.png",
+      "maximum": 0.38269615173339844,
+      "minimum": 0.11687469482421875,
+      "maximum_yx": [
+        305,
+        528
+      ],
+      "max_border_distance": 305,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/004.png",
+      "maximum": 0.3774988651275635,
+      "minimum": 0.1392100751399994,
+      "maximum_yx": [
+        3,
+        1010
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/005.png",
+      "maximum": 0.4398689270019531,
+      "minimum": 0.1443636268377304,
+      "maximum_yx": [
+        508,
+        863
+      ],
+      "max_border_distance": 160,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/006.png",
+      "maximum": 0.437061607837677,
+      "minimum": 0.13216839730739594,
+      "maximum_yx": [
+        271,
+        281
+      ],
+      "max_border_distance": 271,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/007.png",
+      "maximum": 0.4212345778942108,
+      "minimum": 0.12618142366409302,
+      "maximum_yx": [
+        3,
+        601
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/008.png",
+      "maximum": 0.5085582137107849,
+      "minimum": 0.13694322109222412,
+      "maximum_yx": [
+        115,
+        611
+      ],
+      "max_border_distance": 115,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/009.png",
+      "maximum": 0.43321752548217773,
+      "minimum": 0.13570302724838257,
+      "maximum_yx": [
+        1,
+        519
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/010.png",
+      "maximum": 0.545500636100769,
+      "minimum": 0.12222445756196976,
+      "maximum_yx": [
+        184,
+        814
+      ],
+      "max_border_distance": 184,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/011.png",
+      "maximum": 0.3857240080833435,
+      "minimum": 0.13089708983898163,
+      "maximum_yx": [
+        12,
+        907
+      ],
+      "max_border_distance": 12,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/012.png",
+      "maximum": 0.42932870984077454,
+      "minimum": 0.13001465797424316,
+      "maximum_yx": [
+        802,
+        1020
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/013.png",
+      "maximum": 0.3913658857345581,
+      "minimum": 0.14452806115150452,
+      "maximum_yx": [
+        438,
+        150
+      ],
+      "max_border_distance": 150,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/014.png",
+      "maximum": 0.4461531639099121,
+      "minimum": 0.1245034784078598,
+      "maximum_yx": [
+        125,
+        527
+      ],
+      "max_border_distance": 125,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/015.png",
+      "maximum": 0.41716647148132324,
+      "minimum": 0.13513514399528503,
+      "maximum_yx": [
+        539,
+        393
+      ],
+      "max_border_distance": 393,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/016.png",
+      "maximum": 0.3972949683666229,
+      "minimum": 0.11422993242740631,
+      "maximum_yx": [
+        592,
+        342
+      ],
+      "max_border_distance": 342,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/017.png",
+      "maximum": 0.4463064968585968,
+      "minimum": 0.12636929750442505,
+      "maximum_yx": [
+        26,
+        737
+      ],
+      "max_border_distance": 26,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/018.png",
+      "maximum": 0.43107476830482483,
+      "minimum": 0.12730754911899567,
+      "maximum_yx": [
+        26,
+        888
+      ],
+      "max_border_distance": 26,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/000.png",
+      "maximum": 1.0212326049804688,
+      "minimum": 0.1475050449371338,
+      "maximum_yx": [
+        506,
+        465
+      ],
+      "max_border_distance": 465,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/001.png",
+      "maximum": 0.4993331730365753,
+      "minimum": 0.13733595609664917,
+      "maximum_yx": [
+        672,
+        405
+      ],
+      "max_border_distance": 351,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/002.png",
+      "maximum": 0.47381946444511414,
+      "minimum": 0.15270552039146423,
+      "maximum_yx": [
+        393,
+        167
+      ],
+      "max_border_distance": 167,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/003.png",
+      "maximum": 0.9737609624862671,
+      "minimum": 0.15812237560749054,
+      "maximum_yx": [
+        546,
+        742
+      ],
+      "max_border_distance": 281,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/004.png",
+      "maximum": 0.7674278616905212,
+      "minimum": 0.14921452105045319,
+      "maximum_yx": [
+        328,
+        604
+      ],
+      "max_border_distance": 328,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/005.png",
+      "maximum": 0.4162675142288208,
+      "minimum": 0.13340231776237488,
+      "maximum_yx": [
+        318,
+        430
+      ],
+      "max_border_distance": 318,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/006.png",
+      "maximum": 0.4217180907726288,
+      "minimum": 0.14588980376720428,
+      "maximum_yx": [
+        679,
+        390
+      ],
+      "max_border_distance": 344,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/007.png",
+      "maximum": 0.7149963974952698,
+      "minimum": 0.11527105420827866,
+      "maximum_yx": [
+        675,
+        677
+      ],
+      "max_border_distance": 346,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/008.png",
+      "maximum": 0.9057345390319824,
+      "minimum": 0.11062479019165039,
+      "maximum_yx": [
+        561,
+        669
+      ],
+      "max_border_distance": 354,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/009.png",
+      "maximum": 0.39303094148635864,
+      "minimum": 0.13745009899139404,
+      "maximum_yx": [
+        564,
+        458
+      ],
+      "max_border_distance": 458,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/010.png",
+      "maximum": 0.37415066361427307,
+      "minimum": 0.12444417923688889,
+      "maximum_yx": [
+        730,
+        608
+      ],
+      "max_border_distance": 293,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/011.png",
+      "maximum": 0.3902944326400757,
+      "minimum": 0.12756334245204926,
+      "maximum_yx": [
+        3,
+        833
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/012.png",
+      "maximum": 0.44643154740333557,
+      "minimum": 0.12325694411993027,
+      "maximum_yx": [
+        355,
+        417
+      ],
+      "max_border_distance": 355,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/013.png",
+      "maximum": 0.46127793192863464,
+      "minimum": 0.13709606230258942,
+      "maximum_yx": [
+        593,
+        829
+      ],
+      "max_border_distance": 194,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/014.png",
+      "maximum": 0.42727646231651306,
+      "minimum": 0.12887923419475555,
+      "maximum_yx": [
+        813,
+        552
+      ],
+      "max_border_distance": 210,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/015.png",
+      "maximum": 0.4215131402015686,
+      "minimum": 0.11763964593410492,
+      "maximum_yx": [
+        598,
+        629
+      ],
+      "max_border_distance": 394,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/016.png",
+      "maximum": 1.0691652297973633,
+      "minimum": 0.13171795010566711,
+      "maximum_yx": [
+        660,
+        677
+      ],
+      "max_border_distance": 346,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/017.png",
+      "maximum": 0.4739324748516083,
+      "minimum": 0.12882809340953827,
+      "maximum_yx": [
+        428,
+        734
+      ],
+      "max_border_distance": 289,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/018.png",
+      "maximum": 0.7661690711975098,
+      "minimum": 0.14135701954364777,
+      "maximum_yx": [
+        281,
+        816
+      ],
+      "max_border_distance": 207,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/000.png",
+      "maximum": 0.4554310441017151,
+      "minimum": 0.12800921499729156,
+      "maximum_yx": [
+        233,
+        444
+      ],
+      "max_border_distance": 233,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/001.png",
+      "maximum": 0.44654151797294617,
+      "minimum": 0.13958075642585754,
+      "maximum_yx": [
+        812,
+        526
+      ],
+      "max_border_distance": 211,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/002.png",
+      "maximum": 0.4501420259475708,
+      "minimum": 0.14901448786258698,
+      "maximum_yx": [
+        485,
+        818
+      ],
+      "max_border_distance": 205,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/003.png",
+      "maximum": 0.4121229946613312,
+      "minimum": 0.13098523020744324,
+      "maximum_yx": [
+        532,
+        181
+      ],
+      "max_border_distance": 181,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/004.png",
+      "maximum": 0.4561869204044342,
+      "minimum": 0.15147121250629425,
+      "maximum_yx": [
+        799,
+        488
+      ],
+      "max_border_distance": 224,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/005.png",
+      "maximum": 0.4676193296909332,
+      "minimum": 0.1501455008983612,
+      "maximum_yx": [
+        716,
+        161
+      ],
+      "max_border_distance": 161,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/006.png",
+      "maximum": 0.4328755736351013,
+      "minimum": 0.13314104080200195,
+      "maximum_yx": [
+        617,
+        758
+      ],
+      "max_border_distance": 265,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/007.png",
+      "maximum": 0.4997440576553345,
+      "minimum": 0.14172154664993286,
+      "maximum_yx": [
+        642,
+        437
+      ],
+      "max_border_distance": 381,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/008.png",
+      "maximum": 0.42480161786079407,
+      "minimum": 0.1431645303964615,
+      "maximum_yx": [
+        472,
+        598
+      ],
+      "max_border_distance": 425,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/009.png",
+      "maximum": 0.7662140130996704,
+      "minimum": 0.13534410297870636,
+      "maximum_yx": [
+        334,
+        851
+      ],
+      "max_border_distance": 172,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/010.png",
+      "maximum": 0.591663122177124,
+      "minimum": 0.13015933334827423,
+      "maximum_yx": [
+        785,
+        972
+      ],
+      "max_border_distance": 51,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/011.png",
+      "maximum": 0.5345590114593506,
+      "minimum": 0.12596018612384796,
+      "maximum_yx": [
+        257,
+        405
+      ],
+      "max_border_distance": 257,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/012.png",
+      "maximum": 0.4866960346698761,
+      "minimum": 0.1433679461479187,
+      "maximum_yx": [
+        522,
+        755
+      ],
+      "max_border_distance": 268,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/013.png",
+      "maximum": 0.41559481620788574,
+      "minimum": 0.13432250916957855,
+      "maximum_yx": [
+        13,
+        564
+      ],
+      "max_border_distance": 13,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/014.png",
+      "maximum": 0.46179986000061035,
+      "minimum": 0.1259150207042694,
+      "maximum_yx": [
+        582,
+        544
+      ],
+      "max_border_distance": 441,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/015.png",
+      "maximum": 0.5006380677223206,
+      "minimum": 0.1521449089050293,
+      "maximum_yx": [
+        588,
+        769
+      ],
+      "max_border_distance": 254,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/016.png",
+      "maximum": 0.5068331360816956,
+      "minimum": 0.13160638511180878,
+      "maximum_yx": [
+        245,
+        3
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/000.png",
+      "maximum": 0.8397647738456726,
+      "minimum": 0.1171899288892746,
+      "maximum_yx": [
+        374,
+        644
+      ],
+      "max_border_distance": 374,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/001.png",
+      "maximum": 0.3735380172729492,
+      "minimum": 0.13862302899360657,
+      "maximum_yx": [
+        1022,
+        1012
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/002.png",
+      "maximum": 0.3883565068244934,
+      "minimum": 0.10454495251178741,
+      "maximum_yx": [
+        571,
+        631
+      ],
+      "max_border_distance": 392,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/003.png",
+      "maximum": 0.3997524082660675,
+      "minimum": 0.12101438641548157,
+      "maximum_yx": [
+        318,
+        748
+      ],
+      "max_border_distance": 275,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/004.png",
+      "maximum": 0.3784683346748352,
+      "minimum": 0.12237195670604706,
+      "maximum_yx": [
+        3,
+        243
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/005.png",
+      "maximum": 0.8413925766944885,
+      "minimum": 0.10694330185651779,
+      "maximum_yx": [
+        709,
+        374
+      ],
+      "max_border_distance": 314,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/006.png",
+      "maximum": 0.4480014741420746,
+      "minimum": 0.12609554827213287,
+      "maximum_yx": [
+        550,
+        685
+      ],
+      "max_border_distance": 338,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/007.png",
+      "maximum": 0.4628550112247467,
+      "minimum": 0.1434876173734665,
+      "maximum_yx": [
+        126,
+        1020
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/008.png",
+      "maximum": 0.5885851979255676,
+      "minimum": 0.14122037589550018,
+      "maximum_yx": [
+        184,
+        585
+      ],
+      "max_border_distance": 184,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/009.png",
+      "maximum": 0.3727496266365051,
+      "minimum": 0.14240781962871552,
+      "maximum_yx": [
+        1022,
+        419
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/010.png",
+      "maximum": 0.38220682740211487,
+      "minimum": 0.13121028244495392,
+      "maximum_yx": [
+        7,
+        858
+      ],
+      "max_border_distance": 7,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/011.png",
+      "maximum": 0.42094627022743225,
+      "minimum": 0.14434868097305298,
+      "maximum_yx": [
+        252,
+        608
+      ],
+      "max_border_distance": 252,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/012.png",
+      "maximum": 0.4238913059234619,
+      "minimum": 0.12297866493463516,
+      "maximum_yx": [
+        403,
+        461
+      ],
+      "max_border_distance": 403,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/013.png",
+      "maximum": 0.8876303434371948,
+      "minimum": 0.14072613418102264,
+      "maximum_yx": [
+        730,
+        231
+      ],
+      "max_border_distance": 231,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/014.png",
+      "maximum": 0.7685933113098145,
+      "minimum": 0.1458444595336914,
+      "maximum_yx": [
+        186,
+        324
+      ],
+      "max_border_distance": 186,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/015.png",
+      "maximum": 0.7988229393959045,
+      "minimum": 0.1431635618209839,
+      "maximum_yx": [
+        451,
+        377
+      ],
+      "max_border_distance": 377,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/016.png",
+      "maximum": 0.40789228677749634,
+      "minimum": 0.14180922508239746,
+      "maximum_yx": [
+        637,
+        965
+      ],
+      "max_border_distance": 58,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/017.png",
+      "maximum": 0.7601600885391235,
+      "minimum": 0.1328415870666504,
+      "maximum_yx": [
+        551,
+        828
+      ],
+      "max_border_distance": 195,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/018.png",
+      "maximum": 0.6685276627540588,
+      "minimum": 0.11875785142183304,
+      "maximum_yx": [
+        175,
+        808
+      ],
+      "max_border_distance": 175,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/000.png",
+      "maximum": 0.33970439434051514,
+      "minimum": 0.10793937742710114,
+      "maximum_yx": [
+        527,
+        563
+      ],
+      "max_border_distance": 460,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/001.png",
+      "maximum": 0.35837700963020325,
+      "minimum": 0.1396278589963913,
+      "maximum_yx": [
+        179,
+        274
+      ],
+      "max_border_distance": 179,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/002.png",
+      "maximum": 0.3832433521747589,
+      "minimum": 0.1277126967906952,
+      "maximum_yx": [
+        30,
+        440
+      ],
+      "max_border_distance": 30,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/003.png",
+      "maximum": 0.38253918290138245,
+      "minimum": 0.1328679770231247,
+      "maximum_yx": [
+        1,
+        851
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/004.png",
+      "maximum": 0.35205069184303284,
+      "minimum": 0.12137985974550247,
+      "maximum_yx": [
+        1020,
+        92
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/005.png",
+      "maximum": 0.38337990641593933,
+      "minimum": 0.12153267860412598,
+      "maximum_yx": [
+        3,
+        313
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/006.png",
+      "maximum": 0.34927353262901306,
+      "minimum": 0.12457163631916046,
+      "maximum_yx": [
+        392,
+        613
+      ],
+      "max_border_distance": 392,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/007.png",
+      "maximum": 0.3925560712814331,
+      "minimum": 0.13721232116222382,
+      "maximum_yx": [
+        3,
+        179
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/008.png",
+      "maximum": 0.3833111524581909,
+      "minimum": 0.1195409744977951,
+      "maximum_yx": [
+        3,
+        732
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/009.png",
+      "maximum": 0.37459129095077515,
+      "minimum": 0.12083035707473755,
+      "maximum_yx": [
+        3,
+        6
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/010.png",
+      "maximum": 0.3703158497810364,
+      "minimum": 0.11911223828792572,
+      "maximum_yx": [
+        3,
+        13
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/011.png",
+      "maximum": 0.3965516984462738,
+      "minimum": 0.1408035308122635,
+      "maximum_yx": [
+        7,
+        1
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/012.png",
+      "maximum": 0.43919166922569275,
+      "minimum": 0.12959234416484833,
+      "maximum_yx": [
+        3,
+        216
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/013.png",
+      "maximum": 0.4116091728210449,
+      "minimum": 0.12070334702730179,
+      "maximum_yx": [
+        3,
+        429
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/014.png",
+      "maximum": 0.40037408471107483,
+      "minimum": 0.12764716148376465,
+      "maximum_yx": [
+        3,
+        1013
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/015.png",
+      "maximum": 0.3796345591545105,
+      "minimum": 0.12431542575359344,
+      "maximum_yx": [
+        3,
+        906
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/016.png",
+      "maximum": 0.38162991404533386,
+      "minimum": 0.13319754600524902,
+      "maximum_yx": [
+        3,
+        182
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/017.png",
+      "maximum": 0.3798947036266327,
+      "minimum": 0.1270749270915985,
+      "maximum_yx": [
+        3,
+        796
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/018.png",
+      "maximum": 0.3637100160121918,
+      "minimum": 0.11476771533489227,
+      "maximum_yx": [
+        6,
+        1020
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/019.png",
+      "maximum": 0.38117390871047974,
+      "minimum": 0.12267263978719711,
+      "maximum_yx": [
+        3,
+        981
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/020.png",
+      "maximum": 0.35920000076293945,
+      "minimum": 0.14174948632717133,
+      "maximum_yx": [
+        3,
+        790
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/021.png",
+      "maximum": 0.4168044924736023,
+      "minimum": 0.12436923384666443,
+      "maximum_yx": [
+        3,
+        999
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/022.png",
+      "maximum": 0.3617129921913147,
+      "minimum": 0.13509021699428558,
+      "maximum_yx": [
+        3,
+        641
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/023.png",
+      "maximum": 0.35761725902557373,
+      "minimum": 0.10925853252410889,
+      "maximum_yx": [
+        5,
+        269
+      ],
+      "max_border_distance": 5,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/024.png",
+      "maximum": 0.3773477375507355,
+      "minimum": 0.1411277949810028,
+      "maximum_yx": [
+        57,
+        1020
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/025.png",
+      "maximum": 0.371827095746994,
+      "minimum": 0.13146446645259857,
+      "maximum_yx": [
+        15,
+        940
+      ],
+      "max_border_distance": 15,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/026.png",
+      "maximum": 0.3741694390773773,
+      "minimum": 0.13296952843666077,
+      "maximum_yx": [
+        1005,
+        3
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/027.png",
+      "maximum": 0.3573869466781616,
+      "minimum": 0.11978570371866226,
+      "maximum_yx": [
+        1,
+        406
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/028.png",
+      "maximum": 0.37822225689888,
+      "minimum": 0.1221093088388443,
+      "maximum_yx": [
+        0,
+        905
+      ],
+      "max_border_distance": 0,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/029.png",
+      "maximum": 0.3999693989753723,
+      "minimum": 0.11318055540323257,
+      "maximum_yx": [
+        1,
+        550
+      ],
+      "max_border_distance": 1,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/030.png",
+      "maximum": 0.6120452284812927,
+      "minimum": 0.1277543157339096,
+      "maximum_yx": [
+        506,
+        711
+      ],
+      "max_border_distance": 312,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/031.png",
+      "maximum": 0.40738585591316223,
+      "minimum": 0.1126624345779419,
+      "maximum_yx": [
+        3,
+        987
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/000.png",
+      "maximum": 0.4141107499599457,
+      "minimum": 0.14887234568595886,
+      "maximum_yx": [
+        2,
+        237
+      ],
+      "max_border_distance": 2,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/001.png",
+      "maximum": 0.4199451208114624,
+      "minimum": 0.13314051926136017,
+      "maximum_yx": [
+        340,
+        577
+      ],
+      "max_border_distance": 340,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/002.png",
+      "maximum": 0.42596837878227234,
+      "minimum": 0.14531172811985016,
+      "maximum_yx": [
+        753,
+        235
+      ],
+      "max_border_distance": 235,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/003.png",
+      "maximum": 0.45500653982162476,
+      "minimum": 0.11417251825332642,
+      "maximum_yx": [
+        335,
+        450
+      ],
+      "max_border_distance": 335,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/004.png",
+      "maximum": 0.7044548392295837,
+      "minimum": 0.14360229671001434,
+      "maximum_yx": [
+        511,
+        899
+      ],
+      "max_border_distance": 124,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/005.png",
+      "maximum": 0.826147198677063,
+      "minimum": 0.1617259383201599,
+      "maximum_yx": [
+        504,
+        338
+      ],
+      "max_border_distance": 338,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/006.png",
+      "maximum": 0.4526984691619873,
+      "minimum": 0.1514529436826706,
+      "maximum_yx": [
+        1020,
+        378
+      ],
+      "max_border_distance": 3,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/007.png",
+      "maximum": 0.5377126932144165,
+      "minimum": 0.14065200090408325,
+      "maximum_yx": [
+        572,
+        427
+      ],
+      "max_border_distance": 427,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/008.png",
+      "maximum": 0.5491030812263489,
+      "minimum": 0.13191218674182892,
+      "maximum_yx": [
+        681,
+        814
+      ],
+      "max_border_distance": 209,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/009.png",
+      "maximum": 0.5128722190856934,
+      "minimum": 0.1376175433397293,
+      "maximum_yx": [
+        652,
+        604
+      ],
+      "max_border_distance": 371,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/010.png",
+      "maximum": 0.4686222970485687,
+      "minimum": 0.12487064301967621,
+      "maximum_yx": [
+        259,
+        696
+      ],
+      "max_border_distance": 259,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/011.png",
+      "maximum": 0.47795236110687256,
+      "minimum": 0.1365358531475067,
+      "maximum_yx": [
+        238,
+        430
+      ],
+      "max_border_distance": 238,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/012.png",
+      "maximum": 0.4249812662601471,
+      "minimum": 0.12856416404247284,
+      "maximum_yx": [
+        527,
+        358
+      ],
+      "max_border_distance": 358,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/013.png",
+      "maximum": 0.43005040287971497,
+      "minimum": 0.12436169385910034,
+      "maximum_yx": [
+        286,
+        553
+      ],
+      "max_border_distance": 286,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/014.png",
+      "maximum": 0.38147711753845215,
+      "minimum": 0.1413886696100235,
+      "maximum_yx": [
+        704,
+        265
+      ],
+      "max_border_distance": 265,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/015.png",
+      "maximum": 0.5951628088951111,
+      "minimum": 0.11769886314868927,
+      "maximum_yx": [
+        501,
+        616
+      ],
+      "max_border_distance": 407,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/016.png",
+      "maximum": 0.6490619778633118,
+      "minimum": 0.14157097041606903,
+      "maximum_yx": [
+        387,
+        341
+      ],
+      "max_border_distance": 341,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/017.png",
+      "maximum": 0.6053772568702698,
+      "minimum": 0.12980259954929352,
+      "maximum_yx": [
+        723,
+        828
+      ],
+      "max_border_distance": 195,
+      "zero_pixel_count": 0
+    }
+  ],
+  "history_analysis": {
+    "path": "/home/salvatore/Chiara/Tesi/repository_pw/CCW-SSIM/Weights/new_weights/ccwssim_leather_history.csv",
+    "sha256": "39183bd54750a991cb191f0a73a5b8a8b818cff66c990909003c9519e6a84322",
+    "rows": 200,
+    "epoch_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199
+    ],
+    "first": {
+      "epoch": "0",
+      "color_only_metric": "5.3080725649505694e-05",
+      "cwssim_only_metric": "0.48998259464053995",
+      "loss": "0.4900032604895187",
+      "lr": "0.001",
+      "val_color_only_metric": "NA",
+      "val_cwssim_only_metric": "NA",
+      "val_loss": "NA",
+      "val_lr": "NA"
+    },
+    "last": {
+      "epoch": "199",
+      "color_only_metric": "6.466798474402226e-06",
+      "cwssim_only_metric": "0.14496975586350025",
+      "loss": "0.14497466249743507",
+      "lr": "1.220703125e-07",
+      "val_color_only_metric": "NA",
+      "val_cwssim_only_metric": "NA",
+      "val_loss": "NA",
+      "val_lr": "NA"
+    },
+    "max_loss_minus_structural": 2.3931273108290796e-05,
+    "last_loss_minus_structural": 4.90663393482027e-06,
+    "history_binding": "Configured CSV path; historical training manifest does not authenticate this CSV hash"
+  }
+}

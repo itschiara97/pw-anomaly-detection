@@ -1,0 +1,1495 @@
+{
+  "model": "PaDiM",
+  "verified_utc": "2026-10-02T13:08:26.054053+00:00",
+  "method": "Shared archived evaluator on all 124 full-resolution maps; no model execution",
+  "verifier_sha256": "017d250cdf33bfb73a0e91c787c8338510370c252c1815da7a0c6000806bc9c7",
+  "provenance": {
+    "result_sha256": "e90e7f342e6a9911fd8505d858808b2df41faf31c0334496a72fb254e870cd08",
+    "training_manifest_sha256": "6bf65507e2d6ffbc1380c3e8d769e8331e06c227329b8c936f193d891d21a085",
+    "prediction_manifest_sha256": "6eae2e9217a56ad5464275144d85ffbcd72b28032cc7a6ea880a306dac4286ce",
+    "maps_sha256": "abaa1862279653973d95c43fb0a5f6b5f530d546f452d38ab1b121c56143c582",
+    "runtime_differences": {
+      "training": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      },
+      "prediction": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      },
+      "evaluation": {
+        "platform": {
+          "recorded": "Linux-7.1.5-1-cachyos-x86_64-with-glibc2.44",
+          "current": "Linux-7.2.6-1-cachyos-x86_64-with-glibc2.44"
+        }
+      }
+    },
+    "training_budget": {
+      "epochs": null,
+      "optimizer_updates_total": 0,
+      "source_image_passes_total": 1,
+      "training_images": 245,
+      "wall_clock_seconds": 13.898026541000036
+    }
+  },
+  "evaluation_protocol": {
+    "pixel_metric_stride": 4,
+    "image_score_aggregation": "max",
+    "threshold_protocol": "test_oracle_f1_max",
+    "image_f1_thresholds": "exact_unique_scores",
+    "pixel_f1_threshold_count": 500,
+    "serialized_curve_max_points": 4096
+  },
+  "metric_checks": {
+    "au_pro": {
+      "archived": 0.9786367597638633,
+      "recomputed": 0.9786367597638633,
+      "absolute_difference": 0.0
+    },
+    "classification_au_roc": {
+      "archived": 1.0,
+      "recomputed": 1.0,
+      "absolute_difference": 0.0
+    },
+    "segmentation_au_roc": {
+      "archived": 0.9911459384746838,
+      "recomputed": 0.9911459384746838,
+      "absolute_difference": 0.0
+    },
+    "f1_max_image": {
+      "archived": 1.0,
+      "recomputed": 1.0,
+      "absolute_difference": 0.0
+    },
+    "f1_max_pixel": {
+      "archived": 0.42434481210881986,
+      "recomputed": 0.42434481210881986,
+      "absolute_difference": 0.0
+    },
+    "precision_image": {
+      "archived": 1.0,
+      "recomputed": 1.0,
+      "absolute_difference": 0.0
+    },
+    "recall_image": {
+      "archived": 1.0,
+      "recomputed": 1.0,
+      "absolute_difference": 0.0
+    },
+    "precision_pixel": {
+      "archived": 0.315858344005791,
+      "recomputed": 0.315858344005791,
+      "absolute_difference": 0.0
+    },
+    "recall_pixel": {
+      "archived": 0.6463405370504007,
+      "recomputed": 0.6463405370504007,
+      "absolute_difference": 0.0
+    },
+    "optimal_threshold_image": {
+      "archived": 0.26300204785043296,
+      "recomputed": 0.26300204785043296,
+      "absolute_difference": 0.0
+    },
+    "optimal_threshold_pixel": {
+      "archived": 0.38276553106212424,
+      "recomputed": 0.38276553106212424,
+      "absolute_difference": 0.0
+    },
+    "fpr_at_tpr95_image": {
+      "archived": 0.0,
+      "recomputed": 0.0,
+      "absolute_difference": 0.0
+    },
+    "score_min_raw": {
+      "archived": 13.429774284362793,
+      "recomputed": 13.429774284362793,
+      "absolute_difference": 0.0
+    },
+    "score_max_raw": {
+      "archived": 51.525978088378906,
+      "recomputed": 51.525978088378906,
+      "absolute_difference": 0.0
+    },
+    "map_score_min_raw": {
+      "archived": 6.565112590789795,
+      "recomputed": 6.565112590789795,
+      "absolute_difference": 0.0
+    },
+    "map_score_max_raw": {
+      "archived": 51.525978088378906,
+      "recomputed": 51.525978088378906,
+      "absolute_difference": 0.0
+    }
+  },
+  "map_diagnostics": [
+    {
+      "image": "color/000.png",
+      "maximum": 42.99562072753906,
+      "minimum": 7.987718105316162,
+      "maximum_yx": [
+        601,
+        748
+      ],
+      "max_border_distance": 275,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/001.png",
+      "maximum": 33.30898666381836,
+      "minimum": 7.451981544494629,
+      "maximum_yx": [
+        420,
+        744
+      ],
+      "max_border_distance": 279,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/002.png",
+      "maximum": 33.29547882080078,
+      "minimum": 7.078025817871094,
+      "maximum_yx": [
+        821,
+        715
+      ],
+      "max_border_distance": 202,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/003.png",
+      "maximum": 26.688589096069336,
+      "minimum": 7.615911483764648,
+      "maximum_yx": [
+        349,
+        527
+      ],
+      "max_border_distance": 349,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/004.png",
+      "maximum": 23.715736389160156,
+      "minimum": 6.810634136199951,
+      "maximum_yx": [
+        785,
+        422
+      ],
+      "max_border_distance": 238,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/005.png",
+      "maximum": 32.6676025390625,
+      "minimum": 7.879666805267334,
+      "maximum_yx": [
+        527,
+        861
+      ],
+      "max_border_distance": 162,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/006.png",
+      "maximum": 28.91069793701172,
+      "minimum": 7.383424758911133,
+      "maximum_yx": [
+        274,
+        307
+      ],
+      "max_border_distance": 274,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/007.png",
+      "maximum": 28.991554260253906,
+      "minimum": 7.6844353675842285,
+      "maximum_yx": [
+        310,
+        604
+      ],
+      "max_border_distance": 310,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/008.png",
+      "maximum": 27.72014045715332,
+      "minimum": 7.569801330566406,
+      "maximum_yx": [
+        569,
+        747
+      ],
+      "max_border_distance": 276,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/009.png",
+      "maximum": 26.532915115356445,
+      "minimum": 7.768081188201904,
+      "maximum_yx": [
+        860,
+        714
+      ],
+      "max_border_distance": 163,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/010.png",
+      "maximum": 34.75163269042969,
+      "minimum": 7.692163944244385,
+      "maximum_yx": [
+        164,
+        820
+      ],
+      "max_border_distance": 164,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/011.png",
+      "maximum": 34.6811408996582,
+      "minimum": 7.544005393981934,
+      "maximum_yx": [
+        714,
+        347
+      ],
+      "max_border_distance": 309,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/012.png",
+      "maximum": 28.486873626708984,
+      "minimum": 7.318610668182373,
+      "maximum_yx": [
+        530,
+        714
+      ],
+      "max_border_distance": 309,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/013.png",
+      "maximum": 28.433382034301758,
+      "minimum": 7.130167484283447,
+      "maximum_yx": [
+        748,
+        526
+      ],
+      "max_border_distance": 275,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/014.png",
+      "maximum": 33.06598663330078,
+      "minimum": 7.547286033630371,
+      "maximum_yx": [
+        127,
+        529
+      ],
+      "max_border_distance": 127,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/015.png",
+      "maximum": 29.645965576171875,
+      "minimum": 7.645066738128662,
+      "maximum_yx": [
+        491,
+        421
+      ],
+      "max_border_distance": 421,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/016.png",
+      "maximum": 32.322120666503906,
+      "minimum": 7.868738651275635,
+      "maximum_yx": [
+        602,
+        347
+      ],
+      "max_border_distance": 347,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/017.png",
+      "maximum": 25.404815673828125,
+      "minimum": 7.812454700469971,
+      "maximum_yx": [
+        454,
+        675
+      ],
+      "max_border_distance": 348,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "color/018.png",
+      "maximum": 34.20851516723633,
+      "minimum": 7.297661781311035,
+      "maximum_yx": [
+        788,
+        747
+      ],
+      "max_border_distance": 235,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/000.png",
+      "maximum": 39.0865364074707,
+      "minimum": 7.3406901359558105,
+      "maximum_yx": [
+        495,
+        471
+      ],
+      "max_border_distance": 471,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/001.png",
+      "maximum": 34.699745178222656,
+      "minimum": 7.390474319458008,
+      "maximum_yx": [
+        678,
+        417
+      ],
+      "max_border_distance": 345,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/002.png",
+      "maximum": 29.796850204467773,
+      "minimum": 7.472187519073486,
+      "maximum_yx": [
+        308,
+        164
+      ],
+      "max_border_distance": 164,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/003.png",
+      "maximum": 44.337703704833984,
+      "minimum": 7.68724250793457,
+      "maximum_yx": [
+        567,
+        750
+      ],
+      "max_border_distance": 273,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/004.png",
+      "maximum": 36.07282257080078,
+      "minimum": 6.915353298187256,
+      "maximum_yx": [
+        347,
+        641
+      ],
+      "max_border_distance": 347,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/005.png",
+      "maximum": 28.987552642822266,
+      "minimum": 6.7860517501831055,
+      "maximum_yx": [
+        309,
+        455
+      ],
+      "max_border_distance": 309,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/006.png",
+      "maximum": 30.33759880065918,
+      "minimum": 7.450833797454834,
+      "maximum_yx": [
+        642,
+        307
+      ],
+      "max_border_distance": 307,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/007.png",
+      "maximum": 41.6932258605957,
+      "minimum": 7.724101543426514,
+      "maximum_yx": [
+        641,
+        675
+      ],
+      "max_border_distance": 348,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/008.png",
+      "maximum": 39.28606033325195,
+      "minimum": 7.25758171081543,
+      "maximum_yx": [
+        567,
+        677
+      ],
+      "max_border_distance": 346,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/009.png",
+      "maximum": 26.690475463867188,
+      "minimum": 7.175438404083252,
+      "maximum_yx": [
+        568,
+        456
+      ],
+      "max_border_distance": 455,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/010.png",
+      "maximum": 26.986635208129883,
+      "minimum": 7.063055038452148,
+      "maximum_yx": [
+        753,
+        600
+      ],
+      "max_border_distance": 270,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/011.png",
+      "maximum": 25.277616500854492,
+      "minimum": 7.147408962249756,
+      "maximum_yx": [
+        456,
+        605
+      ],
+      "max_border_distance": 418,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/012.png",
+      "maximum": 30.37251853942871,
+      "minimum": 6.565112590789795,
+      "maximum_yx": [
+        368,
+        415
+      ],
+      "max_border_distance": 368,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/013.png",
+      "maximum": 29.26850128173828,
+      "minimum": 7.3036274909973145,
+      "maximum_yx": [
+        602,
+        822
+      ],
+      "max_border_distance": 201,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/014.png",
+      "maximum": 23.449153900146484,
+      "minimum": 7.308053970336914,
+      "maximum_yx": [
+        787,
+        497
+      ],
+      "max_border_distance": 236,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/015.png",
+      "maximum": 27.276691436767578,
+      "minimum": 7.251590251922607,
+      "maximum_yx": [
+        601,
+        599
+      ],
+      "max_border_distance": 422,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/016.png",
+      "maximum": 38.70625305175781,
+      "minimum": 6.611464977264404,
+      "maximum_yx": [
+        668,
+        678
+      ],
+      "max_border_distance": 345,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/017.png",
+      "maximum": 32.6397590637207,
+      "minimum": 6.934988021850586,
+      "maximum_yx": [
+        380,
+        676
+      ],
+      "max_border_distance": 347,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "cut/018.png",
+      "maximum": 38.500732421875,
+      "minimum": 7.48439359664917,
+      "maximum_yx": [
+        310,
+        755
+      ],
+      "max_border_distance": 268,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/000.png",
+      "maximum": 39.31156921386719,
+      "minimum": 7.553816795349121,
+      "maximum_yx": [
+        236,
+        382
+      ],
+      "max_border_distance": 236,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/001.png",
+      "maximum": 31.68238067626953,
+      "minimum": 7.76366662979126,
+      "maximum_yx": [
+        785,
+        602
+      ],
+      "max_border_distance": 238,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/002.png",
+      "maximum": 34.112525939941406,
+      "minimum": 7.876895904541016,
+      "maximum_yx": [
+        494,
+        820
+      ],
+      "max_border_distance": 203,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/003.png",
+      "maximum": 34.24420928955078,
+      "minimum": 7.092228412628174,
+      "maximum_yx": [
+        567,
+        163
+      ],
+      "max_border_distance": 163,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/004.png",
+      "maximum": 33.52798080444336,
+      "minimum": 6.950226783752441,
+      "maximum_yx": [
+        718,
+        676
+      ],
+      "max_border_distance": 305,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/005.png",
+      "maximum": 32.87002944946289,
+      "minimum": 7.864638328552246,
+      "maximum_yx": [
+        743,
+        123
+      ],
+      "max_border_distance": 123,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/006.png",
+      "maximum": 27.35590934753418,
+      "minimum": 7.210944175720215,
+      "maximum_yx": [
+        564,
+        748
+      ],
+      "max_border_distance": 275,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/007.png",
+      "maximum": 27.188413619995117,
+      "minimum": 7.320641994476318,
+      "maximum_yx": [
+        455,
+        453
+      ],
+      "max_border_distance": 453,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/008.png",
+      "maximum": 25.678911209106445,
+      "minimum": 7.6389970779418945,
+      "maximum_yx": [
+        525,
+        558
+      ],
+      "max_border_distance": 465,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/009.png",
+      "maximum": 34.490848541259766,
+      "minimum": 7.49410343170166,
+      "maximum_yx": [
+        346,
+        858
+      ],
+      "max_border_distance": 165,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/010.png",
+      "maximum": 28.933780670166016,
+      "minimum": 7.343838214874268,
+      "maximum_yx": [
+        713,
+        713
+      ],
+      "max_border_distance": 310,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/011.png",
+      "maximum": 27.23341941833496,
+      "minimum": 6.72348165512085,
+      "maximum_yx": [
+        307,
+        309
+      ],
+      "max_border_distance": 307,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/012.png",
+      "maximum": 28.692852020263672,
+      "minimum": 7.442563533782959,
+      "maximum_yx": [
+        529,
+        749
+      ],
+      "max_border_distance": 274,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/013.png",
+      "maximum": 27.581491470336914,
+      "minimum": 7.484951019287109,
+      "maximum_yx": [
+        128,
+        531
+      ],
+      "max_border_distance": 128,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/014.png",
+      "maximum": 33.97800827026367,
+      "minimum": 7.389795780181885,
+      "maximum_yx": [
+        600,
+        529
+      ],
+      "max_border_distance": 423,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/015.png",
+      "maximum": 29.80800437927246,
+      "minimum": 7.963217258453369,
+      "maximum_yx": [
+        674,
+        748
+      ],
+      "max_border_distance": 275,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "fold/016.png",
+      "maximum": 31.268543243408203,
+      "minimum": 7.583763122558594,
+      "maximum_yx": [
+        262,
+        889
+      ],
+      "max_border_distance": 134,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/000.png",
+      "maximum": 42.76674270629883,
+      "minimum": 6.917191982269287,
+      "maximum_yx": [
+        457,
+        712
+      ],
+      "max_border_distance": 311,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/001.png",
+      "maximum": 33.089595794677734,
+      "minimum": 6.864977836608887,
+      "maximum_yx": [
+        529,
+        235
+      ],
+      "max_border_distance": 235,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/002.png",
+      "maximum": 37.89124298095703,
+      "minimum": 7.084674835205078,
+      "maximum_yx": [
+        600,
+        638
+      ],
+      "max_border_distance": 385,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/003.png",
+      "maximum": 37.029441833496094,
+      "minimum": 6.762103080749512,
+      "maximum_yx": [
+        309,
+        786
+      ],
+      "max_border_distance": 237,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/004.png",
+      "maximum": 28.77094268798828,
+      "minimum": 6.8791046142578125,
+      "maximum_yx": [
+        669,
+        344
+      ],
+      "max_border_distance": 344,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/005.png",
+      "maximum": 40.896942138671875,
+      "minimum": 7.410192966461182,
+      "maximum_yx": [
+        678,
+        331
+      ],
+      "max_border_distance": 331,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/006.png",
+      "maximum": 38.76497268676758,
+      "minimum": 6.578232765197754,
+      "maximum_yx": [
+        603,
+        677
+      ],
+      "max_border_distance": 346,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/007.png",
+      "maximum": 37.28652572631836,
+      "minimum": 7.7420854568481445,
+      "maximum_yx": [
+        893,
+        712
+      ],
+      "max_border_distance": 130,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/008.png",
+      "maximum": 39.21037292480469,
+      "minimum": 7.532142162322998,
+      "maximum_yx": [
+        163,
+        601
+      ],
+      "max_border_distance": 163,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/009.png",
+      "maximum": 29.73952865600586,
+      "minimum": 7.304170608520508,
+      "maximum_yx": [
+        455,
+        163
+      ],
+      "max_border_distance": 163,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/010.png",
+      "maximum": 26.038227081298828,
+      "minimum": 7.156842231750488,
+      "maximum_yx": [
+        494,
+        237
+      ],
+      "max_border_distance": 237,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/011.png",
+      "maximum": 37.0748176574707,
+      "minimum": 7.157275676727295,
+      "maximum_yx": [
+        236,
+        601
+      ],
+      "max_border_distance": 236,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/012.png",
+      "maximum": 29.906015396118164,
+      "minimum": 7.3565592765808105,
+      "maximum_yx": [
+        383,
+        385
+      ],
+      "max_border_distance": 383,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/013.png",
+      "maximum": 40.19963836669922,
+      "minimum": 7.6616644859313965,
+      "maximum_yx": [
+        786,
+        161
+      ],
+      "max_border_distance": 161,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/014.png",
+      "maximum": 51.525978088378906,
+      "minimum": 7.045705795288086,
+      "maximum_yx": [
+        235,
+        309
+      ],
+      "max_border_distance": 235,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/015.png",
+      "maximum": 42.03903579711914,
+      "minimum": 7.8864946365356445,
+      "maximum_yx": [
+        455,
+        385
+      ],
+      "max_border_distance": 385,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/016.png",
+      "maximum": 31.060564041137695,
+      "minimum": 8.325915336608887,
+      "maximum_yx": [
+        675,
+        821
+      ],
+      "max_border_distance": 202,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/017.png",
+      "maximum": 39.70640182495117,
+      "minimum": 8.14894962310791,
+      "maximum_yx": [
+        600,
+        859
+      ],
+      "max_border_distance": 164,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "glue/018.png",
+      "maximum": 37.79938888549805,
+      "minimum": 7.959169387817383,
+      "maximum_yx": [
+        198,
+        790
+      ],
+      "max_border_distance": 198,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/000.png",
+      "maximum": 14.444764137268066,
+      "minimum": 7.382076740264893,
+      "maximum_yx": [
+        129,
+        603
+      ],
+      "max_border_distance": 129,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/001.png",
+      "maximum": 14.366044998168945,
+      "minimum": 7.744152069091797,
+      "maximum_yx": [
+        821,
+        859
+      ],
+      "max_border_distance": 164,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/002.png",
+      "maximum": 14.715744018554688,
+      "minimum": 7.328671932220459,
+      "maximum_yx": [
+        310,
+        127
+      ],
+      "max_border_distance": 127,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/003.png",
+      "maximum": 16.882095336914062,
+      "minimum": 7.241699695587158,
+      "maximum_yx": [
+        129,
+        639
+      ],
+      "max_border_distance": 129,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/004.png",
+      "maximum": 14.758306503295898,
+      "minimum": 6.7480549812316895,
+      "maximum_yx": [
+        53,
+        570
+      ],
+      "max_border_distance": 53,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/005.png",
+      "maximum": 16.53834342956543,
+      "minimum": 6.934957027435303,
+      "maximum_yx": [
+        127,
+        90
+      ],
+      "max_border_distance": 90,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/006.png",
+      "maximum": 14.435568809509277,
+      "minimum": 7.363804817199707,
+      "maximum_yx": [
+        566,
+        790
+      ],
+      "max_border_distance": 233,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/007.png",
+      "maximum": 15.83635139465332,
+      "minimum": 7.438213348388672,
+      "maximum_yx": [
+        602,
+        385
+      ],
+      "max_border_distance": 385,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/008.png",
+      "maximum": 13.73559284210205,
+      "minimum": 7.265578746795654,
+      "maximum_yx": [
+        419,
+        987
+      ],
+      "max_border_distance": 36,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/009.png",
+      "maximum": 13.927229881286621,
+      "minimum": 6.949932098388672,
+      "maximum_yx": [
+        675,
+        674
+      ],
+      "max_border_distance": 348,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/010.png",
+      "maximum": 13.727964401245117,
+      "minimum": 7.760776519775391,
+      "maximum_yx": [
+        373,
+        0
+      ],
+      "max_border_distance": 0,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/011.png",
+      "maximum": 14.672823905944824,
+      "minimum": 6.949093341827393,
+      "maximum_yx": [
+        23,
+        569
+      ],
+      "max_border_distance": 23,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/012.png",
+      "maximum": 13.429774284362793,
+      "minimum": 7.738871097564697,
+      "maximum_yx": [
+        536,
+        348
+      ],
+      "max_border_distance": 348,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/013.png",
+      "maximum": 15.003623962402344,
+      "minimum": 7.659995079040527,
+      "maximum_yx": [
+        162,
+        24
+      ],
+      "max_border_distance": 24,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/014.png",
+      "maximum": 14.437578201293945,
+      "minimum": 7.186162948608398,
+      "maximum_yx": [
+        970,
+        526
+      ],
+      "max_border_distance": 53,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/015.png",
+      "maximum": 14.04124641418457,
+      "minimum": 6.814520359039307,
+      "maximum_yx": [
+        0,
+        452
+      ],
+      "max_border_distance": 0,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/016.png",
+      "maximum": 13.957110404968262,
+      "minimum": 6.648393630981445,
+      "maximum_yx": [
+        243,
+        708
+      ],
+      "max_border_distance": 243,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/017.png",
+      "maximum": 13.981694221496582,
+      "minimum": 7.238966941833496,
+      "maximum_yx": [
+        969,
+        310
+      ],
+      "max_border_distance": 54,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/018.png",
+      "maximum": 14.119649887084961,
+      "minimum": 7.239152431488037,
+      "maximum_yx": [
+        127,
+        308
+      ],
+      "max_border_distance": 127,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/019.png",
+      "maximum": 14.378524780273438,
+      "minimum": 7.162919521331787,
+      "maximum_yx": [
+        275,
+        494
+      ],
+      "max_border_distance": 275,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/020.png",
+      "maximum": 14.815696716308594,
+      "minimum": 7.698541164398193,
+      "maximum_yx": [
+        896,
+        231
+      ],
+      "max_border_distance": 127,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/021.png",
+      "maximum": 14.435809135437012,
+      "minimum": 7.128398895263672,
+      "maximum_yx": [
+        94,
+        536
+      ],
+      "max_border_distance": 94,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/022.png",
+      "maximum": 14.323176383972168,
+      "minimum": 7.182844161987305,
+      "maximum_yx": [
+        677,
+        54
+      ],
+      "max_border_distance": 54,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/023.png",
+      "maximum": 14.669939041137695,
+      "minimum": 7.403325080871582,
+      "maximum_yx": [
+        89,
+        0
+      ],
+      "max_border_distance": 0,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/024.png",
+      "maximum": 16.359424591064453,
+      "minimum": 7.540217399597168,
+      "maximum_yx": [
+        91,
+        237
+      ],
+      "max_border_distance": 91,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/025.png",
+      "maximum": 17.383792877197266,
+      "minimum": 7.668129920959473,
+      "maximum_yx": [
+        558,
+        156
+      ],
+      "max_border_distance": 156,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/026.png",
+      "maximum": 15.643086433410645,
+      "minimum": 7.4707560539245605,
+      "maximum_yx": [
+        567,
+        164
+      ],
+      "max_border_distance": 164,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/027.png",
+      "maximum": 15.126300811767578,
+      "minimum": 7.586552143096924,
+      "maximum_yx": [
+        0,
+        567
+      ],
+      "max_border_distance": 0,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/028.png",
+      "maximum": 16.4715518951416,
+      "minimum": 7.731924533843994,
+      "maximum_yx": [
+        1003,
+        601
+      ],
+      "max_border_distance": 20,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/029.png",
+      "maximum": 14.288129806518555,
+      "minimum": 7.028160572052002,
+      "maximum_yx": [
+        939,
+        862
+      ],
+      "max_border_distance": 84,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/030.png",
+      "maximum": 19.335796356201172,
+      "minimum": 7.717264175415039,
+      "maximum_yx": [
+        490,
+        712
+      ],
+      "max_border_distance": 311,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "good/031.png",
+      "maximum": 16.118568420410156,
+      "minimum": 7.707002639770508,
+      "maximum_yx": [
+        494,
+        56
+      ],
+      "max_border_distance": 56,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/000.png",
+      "maximum": 28.9486083984375,
+      "minimum": 7.533672332763672,
+      "maximum_yx": [
+        675,
+        201
+      ],
+      "max_border_distance": 201,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/001.png",
+      "maximum": 28.030357360839844,
+      "minimum": 7.482734680175781,
+      "maximum_yx": [
+        310,
+        531
+      ],
+      "max_border_distance": 310,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/002.png",
+      "maximum": 38.22861099243164,
+      "minimum": 7.253222942352295,
+      "maximum_yx": [
+        750,
+        234
+      ],
+      "max_border_distance": 234,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/003.png",
+      "maximum": 32.3934326171875,
+      "minimum": 7.480685234069824,
+      "maximum_yx": [
+        380,
+        455
+      ],
+      "max_border_distance": 380,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/004.png",
+      "maximum": 34.290061950683594,
+      "minimum": 7.288257598876953,
+      "maximum_yx": [
+        497,
+        901
+      ],
+      "max_border_distance": 122,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/005.png",
+      "maximum": 35.892181396484375,
+      "minimum": 7.436253547668457,
+      "maximum_yx": [
+        497,
+        347
+      ],
+      "max_border_distance": 347,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/006.png",
+      "maximum": 33.60685729980469,
+      "minimum": 7.638945579528809,
+      "maximum_yx": [
+        860,
+        309
+      ],
+      "max_border_distance": 163,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/007.png",
+      "maximum": 31.756540298461914,
+      "minimum": 7.760619640350342,
+      "maximum_yx": [
+        530,
+        454
+      ],
+      "max_border_distance": 454,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/008.png",
+      "maximum": 35.48601150512695,
+      "minimum": 7.8067474365234375,
+      "maximum_yx": [
+        676,
+        820
+      ],
+      "max_border_distance": 203,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/009.png",
+      "maximum": 34.644832611083984,
+      "minimum": 7.346513271331787,
+      "maximum_yx": [
+        673,
+        599
+      ],
+      "max_border_distance": 350,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/010.png",
+      "maximum": 33.57051086425781,
+      "minimum": 7.440479755401611,
+      "maximum_yx": [
+        274,
+        713
+      ],
+      "max_border_distance": 274,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/011.png",
+      "maximum": 32.975982666015625,
+      "minimum": 7.295343399047852,
+      "maximum_yx": [
+        236,
+        449
+      ],
+      "max_border_distance": 236,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/012.png",
+      "maximum": 30.311756134033203,
+      "minimum": 7.354251384735107,
+      "maximum_yx": [
+        491,
+        386
+      ],
+      "max_border_distance": 386,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/013.png",
+      "maximum": 31.012123107910156,
+      "minimum": 7.16646671295166,
+      "maximum_yx": [
+        276,
+        601
+      ],
+      "max_border_distance": 276,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/014.png",
+      "maximum": 30.908742904663086,
+      "minimum": 7.342957496643066,
+      "maximum_yx": [
+        718,
+        270
+      ],
+      "max_border_distance": 270,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/015.png",
+      "maximum": 32.913673400878906,
+      "minimum": 7.826125144958496,
+      "maximum_yx": [
+        519,
+        601
+      ],
+      "max_border_distance": 422,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/016.png",
+      "maximum": 37.873870849609375,
+      "minimum": 7.991480350494385,
+      "maximum_yx": [
+        383,
+        346
+      ],
+      "max_border_distance": 346,
+      "zero_pixel_count": 0
+    },
+    {
+      "image": "poke/017.png",
+      "maximum": 30.653884887695312,
+      "minimum": 7.426265716552734,
+      "maximum_yx": [
+        705,
+        823
+      ],
+      "max_border_distance": 200,
+      "zero_pixel_count": 0
+    }
+  ]
+}
