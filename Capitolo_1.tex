@@ -20,7 +20,7 @@ Queste caratteristiche rendono difficile raccogliere esempi rappresentativi di t
     \item \textbf{Interpretabilità}. Nei domini critici è utile comprendere quali informazioni abbiano determinato una segnalazione. La localizzazione di un difetto può supportare l'ispezione umana, ma non costituisce di per sé una spiegazione del comportamento del modello.
 \end{enumerate}
 
-Il deep learning consente di apprendere rappresentazioni dei dati senza definire manualmente tutte le caratteristiche rilevanti. Questo può migliorare il rilevamento in scenari complessi; non elimina, tuttavia, i problemi di robustezza, generalizzazione e interpretabilità. Il presente elaborato si concentra sulle anomalie visive nell'ispezione industriale.
+Il deep learning consente di apprendere rappresentazioni dei dati senza definire manualmente tutte le caratteristiche rilevanti. Questo può migliorare il rilevamento in scenari complessi; non elimina, tuttavia, i problemi di robustezza, generalizzazione e interpretabilità. In questo lavoro ho circoscritto l'analisi alle anomalie visive nell'ispezione industriale.
 
 \section[Anomalie nella visione artificiale]{Il rilevamento delle anomalie nella visione artificiale}
 
@@ -51,7 +51,7 @@ Nelle linee di produzione efficienti, i difetti possono essere sporadici. Un cla
 
 \subsubsection{Variabilità ed eterogeneità delle anomalie}
 
-I difetti possono differire per forma, dimensione, posizione e contrasto rispetto al materiale. Non è quindi realistico assumere di poter rappresentare tutte le loro configurazioni nell' insieme di addestramento. Il modello deve distinguere le variazioni compatibili con il prodotto conforme dalle deviazioni significative, generalizzando oltre gli esempi osservati \cite{Aggarwal_et_al._2021,Cui_et_al._2023}.
+I difetti possono differire per forma, dimensione, posizione e contrasto rispetto al materiale. Non è quindi realistico assumere di poter rappresentare tutte le loro configurazioni nell'insieme di addestramento. Il modello deve distinguere le variazioni compatibili con il prodotto conforme dalle deviazioni significative, generalizzando oltre gli esempi osservati \cite{Aggarwal_et_al._2021,Cui_et_al._2023}.
 
 La Figura~\ref{fig:variabilita_anomalia} illustra, mediante una serie temporale, la distinzione generale tra anomalie puntuali, contestuali e collettive. Nell'ispezione visiva, l'eterogeneità si manifesta invece attraverso alterazioni cromatiche, discontinuità della tessitura (\textit{texture}) o modifiche della struttura dell'oggetto.
 
@@ -80,7 +80,7 @@ I confini tra variazione normale e difetto possono dunque essere ambigui. Il pre
 
 \subsection{Paradigmi di apprendimento e convenzione terminologica}
 
-La disponibilità delle etichette determina quali informazioni possano guidare l'apprendimento. È utile distinguere il paradigma generale dalla granularità delle annotazioni e dalla specifica composizione dell' insieme di addestramento \cite{Yang_et_al._2021}.
+La disponibilità delle etichette determina quali informazioni possano guidare l'apprendimento. È utile distinguere il paradigma generale dalla granularità delle annotazioni e dalla specifica composizione dell'insieme di addestramento \cite{Yang_et_al._2021}.
 
 \subsubsection{Apprendimento supervisionato}
 
@@ -100,7 +100,7 @@ L'assenza di annotazioni riduce il costo di preparazione dei dati, ma non garant
 
 Una terza impostazione utilizza un insieme di addestramento composto esclusivamente da campioni noti come normali, senza esempi delle anomalie da rilevare. Nella tassonomia generale dell'anomaly detection, questa impostazione è spesso denominata \textit{semi-supervisionata} \cite{Perez_et_al._2021}. I metodi costruiscono una descrizione della classe normale attraverso confini decisionali, distribuzioni statistiche o rappresentazioni neurali.
 
-Nella letteratura sull'ispezione visiva industriale, lo stesso scenario è comunemente indicato come \textit{unsupervised anomaly detection}, poiché l'apprendimento non richiede esempi annotati dei difetti \cite{Cui_et_al._2023}. Per evitare ambiguità, nel presente elaborato si usa l'espressione \textbf{scenario one-class}: l'adattamento al dominio avviene sui soli campioni normali, mentre le etichette e le maschere del test sono riservate alla valutazione.
+Nella letteratura sull'ispezione visiva industriale, lo stesso scenario è comunemente indicato come \textit{unsupervised anomaly detection}, poiché l'apprendimento non richiede esempi annotati dei difetti \cite{Cui_et_al._2023}. Per evitare ambiguità, nell'elaborato adotto l'espressione \textbf{scenario one-class}: l'adattamento al dominio avviene sui soli campioni normali, mentre le etichette e le maschere del test sono riservate alla valutazione.
 
 Questa convenzione si applica a tutti i modelli selezionati. L'eventuale uso di una rete che estrae vettori di caratteristiche (\textit{feature}), detta \textit{backbone}, pre-addestrato su ImageNet riguarda la provenienza della rappresentazione iniziale e deve essere distinto dalle informazioni impiegate nell'adattamento al dominio industriale.
 
@@ -164,16 +164,16 @@ Il punteggio F1 combina precisione e richiamo:
     \frac{2\,\mathrm{precision}\,\mathrm{recall}}
     {\mathrm{precision}+\mathrm{recall}}.
 \]
-Nei risultati del progetto, il massimo F1 è ottenuto scegliendo la soglia sull' insieme di test e costituisce quindi una misura retrospettiva \textit{oracle}. Non rappresenta una prestazione operativa con soglia selezionata su dati indipendenti. Il calcolo a livello di pixel è inoltre approssimato mediante campionamento spaziale con passo 4 e una griglia di 500 soglie.
+Nei risultati del progetto, il massimo F1 è ottenuto scegliendo la soglia sull'insieme di test e costituisce quindi una misura retrospettiva \textit{oracle}. Non rappresenta una prestazione operativa con soglia selezionata su dati indipendenti. Il calcolo a livello di pixel è inoltre approssimato mediante campionamento spaziale con passo 4 e una griglia di 500 soglie.
 
-L'analisi qualitativa completa questi indicatori confrontando immagini, maschere e mappe. Permette di osservare localizzazioni incomplete, risposte diffuse e attivazioni su regioni normali, distinguendo i comportamenti visibili dalle ipotesi sulle loro cause.
+Per interpretare questi indicatori, nel confronto considero anche immagini, maschere e mappe. La lettura qualitativa permette di osservare localizzazioni incomplete, risposte diffuse e attivazioni su regioni normali. Nel discuterle, è necessario distinguere ciò che è visibile dalle ipotesi sulle sue cause.
 
 \section{Obiettivi e struttura dell'elaborato}
 
-Il lavoro analizza in modo comparativo quattro pipeline, cioè procedure che comprendono elaborazione delle immagini, adattamento del modello e inferenza, per il rilevamento delle anomalie visive industriali: \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow}. I modelli rappresentano approcci differenti alla costruzione della normalità: ricostruzione dell'immagine, modellazione statistica delle feature, distillazione della conoscenza e flussi di normalizzazione.
+Il confronto sviluppato nel progetto riguarda quattro pipeline, cioè procedure che comprendono elaborazione delle immagini, adattamento del modello e inferenza, per il rilevamento delle anomalie visive industriali: \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow}. I modelli rappresentano approcci differenti alla costruzione della normalità: ricostruzione dell'immagine, modellazione statistica delle feature, distillazione della conoscenza e flussi di normalizzazione.
 
-Il perimetro sperimentale è circoscritto alla categoria \texttt{leather} di MVTec AD, assunta come unico caso di studio. Il confronto riguarda le implementazioni e le configurazioni adottate, con dati e protocollo di valutazione condivisi. Le differenze di risoluzione, pre-addestramento e regime di apprendimento sono parte dell'interpretazione dei risultati; il confronto non isola l'effetto della sola famiglia metodologica.
+Ho mantenuto la categoria \texttt{leather} di MVTec AD come unico caso di studio, utilizzando dati e protocollo di valutazione condivisi per le implementazioni e le configurazioni adottate. Nella lettura dei risultati considero anche le differenze di risoluzione, pre-addestramento e regime di apprendimento: il confronto comprende queste condizioni e non isola l'effetto della sola famiglia metodologica.
 
-Su questa base, gli obiettivi sono valutare la discriminazione delle immagini e la localizzazione dei difetti, esaminare qualitativamente le mappe e discutere i costi osservati e i limiti delle pipeline. L'estensione ad altre categorie e le prove dedicate a colore, illuminazione o adattamento dei pesi pre-addestrati (\textit{fine-tuning}) costituiscono possibili approfondimenti, da distinguere dagli esperimenti già documentati.
+Su questa base, l'obiettivo è valutare la discriminazione delle immagini e la localizzazione dei difetti, esaminare qualitativamente le mappe e discutere i costi osservati e i limiti delle pipeline. L'estensione ad altre categorie e le prove dedicate a colore, illuminazione o adattamento dei pesi pre-addestrati (\textit{fine-tuning}) restano possibili approfondimenti, distinti dagli esperimenti già documentati.
 
 Il Capitolo~\ref{chap:stato-arte} presenta lo stato dell'arte e i principi dei metodi selezionati. Il Capitolo~\ref{chap:implementazione} descrive le implementazioni e il protocollo comune. Il Capitolo~\ref{chap:risultati} analizza quantitativamente e qualitativamente i risultati, mettendoli in relazione con le fonti di riferimento. Il Capitolo~\ref{chap:conclusioni} sintetizza quanto emerso nel caso di studio e discute i limiti della ricerca e le possibili estensioni.

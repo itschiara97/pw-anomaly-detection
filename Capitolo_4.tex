@@ -1,14 +1,14 @@
 \chapter[Analisi dei risultati]{Analisi quantitativa e qualitativa dei risultati}
 \label{chap:risultati}
 
-Le pipeline descritte nel Capitolo~\ref{chap:implementazione} producono mappe che esprimono, per ogni immagine, la deviazione dalla normalità appresa. Il confronto dei risultati permette di esaminare quanto queste risposte siano utili a riconoscere le immagini difettose e a localizzare le anomalie nella categoria \texttt{leather} di MVTec AD. Le metriche descrivono il comportamento sull'intero insieme di test, mentre le mappe e i casi di errore aiutano a comprenderne gli aspetti visivi.
+Le mappe prodotte dalle pipeline descritte nel Capitolo~\ref{chap:implementazione} esprimono, per ogni immagine, la deviazione dalla normalità appresa. Per valutarne l'utilità nella categoria \texttt{leather} di MVTec AD, occorre leggere insieme il riconoscimento delle immagini difettose e la localizzazione delle anomalie. Le metriche descrivono il comportamento sull'intero insieme di test; le mappe e i casi di errore permettono di vedere come quel comportamento si manifesta nelle immagini.
 
-L'analisi collega quindi la discriminazione delle immagini alla qualità della localizzazione, considerando anche i costi osservati nella fase di apprendimento. Il successivo confronto con le pubblicazioni di riferimento colloca gli esiti nel quadro della letteratura, tenendo conto delle differenze tra le configurazioni e i protocolli di valutazione.
+Nella lettura dei risultati considero quindi la discriminazione delle immagini, la qualità della localizzazione e i costi osservati nella fase di apprendimento. Per confrontare gli esiti con le pubblicazioni di riferimento, tengo conto anche delle differenze tra configurazioni e protocolli di valutazione.
 
 \section{Perimetro e criteri di lettura}
 \label{sec:cap4-protocollo}
 
-Il confronto utilizza il insieme di addestramento di 245 immagini normali e il insieme di test di 124 immagini descritti nel capitolo precedente. Nel test, 32 immagini sono normali e 92 presentano anomalie. La Tabella~\ref{tab:cap4-difetti} ne riporta la distribuzione nelle cinque tipologie di difetto del materiale, fornendo il riferimento per la lettura degli errori.
+Il confronto utilizza l'insieme di addestramento di 245 immagini normali e l'insieme di test di 124 immagini descritti nel capitolo precedente. Nel test, 32 immagini sono normali e 92 presentano anomalie. La Tabella~\ref{tab:cap4-difetti} ne riporta la distribuzione nelle cinque tipologie di difetto del materiale, fornendo il riferimento per la lettura degli errori.
 
 \begin{table}[htbp]
 \centering
@@ -26,7 +26,7 @@ Tipo di immagine & Numero \\
 Totale & 124 \\
 \hline
 \end{tabular}
-\caption{Composizione del insieme di test della categoria \texttt{leather}.}
+\caption{Composizione dell'insieme di test della categoria \texttt{leather}.}
 \label{tab:cap4-difetti}
 \end{table}
 
@@ -34,7 +34,7 @@ I valori riportati provengono dai file di risultato archiviati nel repository e 
 
 Come definito nel Capitolo~\ref{chap:introduzione}, l'AUROC a livello di immagine misura la capacità di ordinare le immagini normali e anomale. L'AUROC a livello di pixel valuta l'ordinamento dei pixel, mentre l'AU-PRO valuta la copertura delle regioni annotate al variare dei falsi positivi. Nel protocollo adottato, quest'ultima area è normalizzata nell'intervallo di FPR compreso tra 0 e 0,3. Le due misure di localizzazione sono complementari e non intercambiabili.
 
-Le metriche F1 aggiungono una lettura a soglia. Il massimo F1 è ottenuto selezionando la soglia sul insieme di test: è quindi una misura \emph{oracle}, utile a descrivere il potenziale del punteggio, non una prestazione operativa su dati indipendenti. A livello di pixel il valutatore utilizza un campionamento con passo quattro lungo entrambe le dimensioni e una griglia di 500 soglie; i valori di precisione e richiamo discussi nel seguito si riferiscono a questo stesso campionamento.
+Le metriche F1 aggiungono una lettura a soglia. Il massimo F1 è ottenuto selezionando la soglia sull'insieme di test: è quindi una misura \emph{oracle}, utile a descrivere il potenziale del punteggio, non una prestazione operativa su dati indipendenti. A livello di pixel il valutatore utilizza un campionamento con passo quattro lungo entrambe le dimensioni e una griglia di 500 soglie; i valori di precisione e richiamo discussi nel seguito si riferiscono a questo stesso campionamento.
 
 Il protocollo comune rende confrontabili gli esiti delle pipeline, ma non annulla le differenze tra esse. PaDiM, RD4AD e FastFlow impiegano feature di una Wide ResNet-50-2 pre-addestrata su ImageNet; CCW-SSIM apprende invece la ricostruzione dalle immagini normali. Risoluzioni, modalità di addestramento e post-elaborazione rimangono quelli documentati nel Capitolo~\ref{chap:implementazione}. Il confronto riguarda dunque sistemi completi nelle configurazioni adottate, non l'effetto isolato della sola funzione di perdita o della sola famiglia metodologica.
 
@@ -57,13 +57,13 @@ AUROC pixel & 0,9707 & 0,9911 & 0,9942 & 0,9968 \\
 AU-PRO & 0,8864 & 0,9786 & 0,9833 & 0,9928 \\
 \hline
 \end{tabularx}
-\caption{Risultati complessivi sul insieme di test \texttt{leather}, con AU-PRO normalizzata fino a FPR pari a 0,3.}
+\caption{Risultati complessivi sull'insieme di test \texttt{leather}, con AU-PRO normalizzata fino a FPR pari a 0,3.}
 \label{tab:cap4-metriche}
 \end{table}
 
 PaDiM, RD4AD e FastFlow raggiungono un'AUROC a livello di immagine pari a 1: i loro punteggi separano completamente le immagini normali da quelle difettose del test. La metrica raggiunge quindi il valore massimo per tutti e tre i metodi e non permette di distinguerli rispetto a questo compito. Il risultato si riferisce ai 124 campioni esaminati e a un'unica esecuzione per pipeline, con seme pseudo-casuale pari a 1024; la generalizzazione a nuove immagini richiede una valutazione ulteriore.
 
-La localizzazione distingue invece le pipeline. FastFlow presenta il valore più alto sia di AUROC pixel sia di AU-PRO, seguito da RD4AD e PaDiM. Rispetto a RD4AD, il vantaggio osservato di FastFlow è di circa 0,26 punti percentuali nell'AUROC pixel e di 0,95 punti percentuali nell'AU-PRO. Tra RD4AD e PaDiM le differenze sono rispettivamente di circa 0,30 e 0,46 punti percentuali. Sono scarti descrittivi: in assenza di ripetizioni e intervalli di incertezza, non ne viene affermata la significatività statistica.
+Per distinguere le pipeline occorre passare alla localizzazione. FastFlow presenta il valore più alto sia di AUROC pixel sia di AU-PRO, seguito da RD4AD e PaDiM. Rispetto a RD4AD, il vantaggio osservato di FastFlow è di circa 0,26 punti percentuali nell'AUROC pixel e di 0,95 punti percentuali nell'AU-PRO. Tra RD4AD e PaDiM le differenze sono rispettivamente di circa 0,30 e 0,46 punti percentuali. Leggo questi scarti come differenze descrittive: senza ripetizioni e intervalli di incertezza, non è possibile affermarne la significatività statistica.
 
 Per CCW-SSIM l'AUROC pixel è pari a 0,9707 e l'AU-PRO a 0,8864. La prima misura indica un buon ordinamento complessivo dei pixel, mentre la seconda evidenzia una copertura delle regioni meno efficace nell'intervallo di falsi positivi considerato. Poiché le due curve integrano grandezze diverse, i valori vanno letti attraverso il loro significato: l'analisi delle mappe permetterà di osservare la copertura dei difetti e le risposte sulla texture normale.
 
@@ -90,7 +90,7 @@ F1 massimo pixel & 0,3840 & 0,4243 & 0,4981 & 0,6161 \\
 FPR con TPR $\geq 95\%$ & 0,5312 & 0,0000 & 0,0000 & 0,0000 \\
 \hline
 \end{tabularx}
-\caption{Metriche a soglia. Le soglie di massimo F1 sono selezionate sul insieme di test; l'FPR dell'ultima riga riguarda la classificazione delle immagini.}
+\caption{Metriche a soglia. Le soglie di massimo F1 sono selezionate sull'insieme di test; l'FPR dell'ultima riga riguarda la classificazione delle immagini.}
 \label{tab:cap4-soglie}
 \end{table}
 
@@ -143,12 +143,12 @@ FastFlow & 200 & 6\,200 & 11,5 \\
 
 PaDiM richiede il tempo di adattamento più basso, mentre CCW-SSIM presenta quello più alto. RD4AD e FastFlow si collocano tra questi estremi. I tempi non rappresentano un confronto a parità di lavoro: differiscono il numero di aggiornamenti, il batch, la precisione numerica, la gestione delle patch e l'architettura. Inoltre, i metodi basati su feature utilizzano un pre-addestramento esterno, il cui costo non è incluso nelle misure.
 
-Il risultato consente quindi di discutere il costo locale di preparazione delle pipeline, non la loro efficienza complessiva. Non sono disponibili qui misure omogenee di latenza, numero di immagini elaborate per unità di tempo e memoria durante l'inferenza; il tempo di addestramento non può sostituirle né verificare le dichiarazioni di velocità dei lavori originali.
+Da questi tempi si può valutare il costo locale di preparazione delle pipeline. Per discuterne l'efficienza complessiva servirebbero anche misure omogenee di latenza, numero di immagini elaborate per unità di tempo e memoria durante l'inferenza, che qui non sono disponibili. Il tempo di addestramento non può sostituirle né verificare le dichiarazioni di velocità dei lavori originali.
 
 \section{Analisi qualitativa e confronto caso per caso}
 \label{sec:cap4-qualitativo}
 
-Le differenze tra AUROC, AU-PRO e F1 rendono utile osservare come i punteggi si distribuiscano nelle immagini. Le figure affiancano l'immagine originale, la maschera annotata e le quattro mappe di anomalia. Il contorno verde sulle mappe indica il riferimento annotato, non una segmentazione prodotta dal modello. Per mantenere una scala coerente tra esempi dello stesso metodo, la visualizzazione applica una normalizzazione min--max basata sull'intero insieme delle mappe di test di ciascuna pipeline:
+Per comprendere le differenze tra AUROC, AU-PRO e F1, ho affiancato ai valori numerici l'esame della distribuzione dei punteggi nelle immagini. Le figure mostrano l'immagine originale, la maschera annotata e le quattro mappe di anomalia. Il contorno verde sulle mappe indica il riferimento annotato, non una segmentazione prodotta dal modello. Per mantenere una scala coerente tra esempi dello stesso metodo, la visualizzazione applica una normalizzazione min--max basata sull'intero insieme delle mappe di test di ciascuna pipeline:
 \begin{equation}
 \widetilde{S}_m(x)=\frac{S_m(x)-a_m}{b_m-a_m},
 \end{equation}
@@ -156,7 +156,7 @@ dove $a_m$ e $b_m$ sono rispettivamente il minimo e il massimo delle mappe del m
 
 Poiché ciascun modello mantiene una propria scala, la stessa tonalità in due pannelli non esprime una probabilità di anomalia equivalente. Il confronto visivo riguarda posizione, forma ed estensione delle risposte. La classificazione dipende invece dal massimo della mappa e dalla soglia globale del modello: una risposta su parte del difetto può essere sufficiente a segnalare l'immagine, mentre una zona luminosa in un campione normale va interpretata rispetto a quella soglia. I conteggi per tipologia riportati nel seguito descrivono le decisioni sulle immagini; la qualità della segmentazione è valutata dalle metriche a livello di pixel e regionali.
 
-Per ciascuna tipologia di difetto è stato scelto il primo file in ordine lessicografico, \texttt{000.png}. La regola rende la selezione riproducibile, ma non garantisce che i campioni siano rappresentativi dell'intera tipologia. Sono aggiunti due esempi diagnostici: l'immagine normale con il massimo punteggio CCW-SSIM e un difetto omesso da tale modello. La Tabella~\ref{tab:cap4-fn} fornisce il contesto quantitativo delle omissioni sull'intero insieme di test, prima della lettura dei singoli esempi.
+Per ciascuna tipologia di difetto ho scelto il primo file in ordine lessicografico, \texttt{000.png}. Questa regola rende la selezione riproducibile, pur senza garantire che i campioni siano rappresentativi dell'intera tipologia. Completano la lettura due esempi diagnostici: l'immagine normale con il massimo punteggio CCW-SSIM e un difetto omesso da tale modello. Prima di esaminare i singoli casi, la Tabella~\ref{tab:cap4-fn} riporta le omissioni sull'intero insieme di test.
 
 \begin{table}[htbp]
 \centering
@@ -181,7 +181,7 @@ Totale & 8/92 & 0/92 & 0/92 & 0/92 \\
 
 Nel campione \texttt{color/000.png} il difetto occupa una piccola zona nella parte inferiore destra dell'immagine. PaDiM, RD4AD e FastFlow producono una risposta riconoscibile nella posizione annotata. PaDiM presenta una distribuzione più regolare e a blocchi, RD4AD una risposta più compatta, mentre FastFlow evidenzia il difetto con un nucleo intenso e una risposta anche nelle aree circostanti. La mappa CCW-SSIM è maggiormente influenzata dalla tessitura diffusa del materiale e mostra un contrasto locale meno evidente.
 
-Il contrasto locale poco evidente di CCW-SSIM si accompagna al riconoscimento di 17 delle 19 immagini \texttt{color} alla soglia globale di massimo F1. L'esempio invita quindi a esaminare la relazione tra risposta cromatica e tessitura del materiale. Il contributo specifico del colore alla funzione di perdita sarà discusso nel confronto con la fonte, poiché la sua misura richiede un'ablazione controllata rispetto alla variante priva di tale componente.
+Il contrasto locale poco evidente di CCW-SSIM si accompagna al riconoscimento di 17 delle 19 immagini \texttt{color} alla soglia globale di massimo F1. Il punto da approfondire è quindi la relazione tra risposta cromatica e tessitura del materiale. Per valutare il contributo specifico del colore alla funzione di perdita occorre però un'ablazione controllata rispetto alla variante priva di tale componente; questo punto verrà ripreso nel confronto con la fonte.
 
 \begin{figure}[htbp]
 \centering
@@ -194,7 +194,7 @@ Il contrasto locale poco evidente di CCW-SSIM si accompagna al riconoscimento di
 
 Il campione \texttt{cut/000.png} contiene un difetto sottile, prevalentemente orizzontale. I tre metodi basati su feature rispondono nell'area corretta, ma la regione ad alto punteggio si estende oltre la geometria del taglio. Questo esempio rende visibile la distinzione tra individuare la posizione del difetto e ricostruirne precisamente il contorno. La risposta PaDiM è più squadrata; quelle di RD4AD e FastFlow sono più continue, pur mantenendo un'estensione superiore alla maschera.
 
-CCW-SSIM presenta una mappa granulare nella quale il difetto emerge meno nettamente rispetto allo sfondo; sull'intera tipologia viene omessa una sola immagine su 19. Il caso richiama soprattutto l'attenzione sui bordi: per una struttura sottile, ricampionamento e filtraggio possono influenzare l'estensione visibile della risposta. Gli esperimenti disponibili descrivono l'esito della pipeline completa e non isolano il contributo di questi passaggi.
+CCW-SSIM presenta una mappa granulare nella quale il difetto emerge meno nettamente rispetto allo sfondo; sull'intera tipologia viene omessa una sola immagine su 19. Nel leggere questo caso, è utile concentrarsi sui bordi: per una struttura sottile, ricampionamento e filtraggio possono influenzare l'estensione visibile della risposta. Resta da verificare quanto ciascun passaggio contribuisca all'esito, perché gli esperimenti disponibili riguardano la pipeline completa.
 
 \begin{figure}[htbp]
 \centering
@@ -207,7 +207,7 @@ CCW-SSIM presenta una mappa granulare nella quale il difetto emerge meno nettame
 
 In \texttt{fold/000.png} la regione difettosa è allungata e si trova nella parte superiore sinistra. PaDiM, RD4AD e FastFlow individuano tale zona, con risposte che ne comprendono anche il contesto. CCW-SSIM conserva una risposta diffusa alla texture e un'evidenza locale meno netta alla scala di visualizzazione adottata.
 
-CCW-SSIM riconosce tutte le 17 immagini \texttt{fold} alla soglia di massimo F1 immagini. La risposta diffusa osservata nel pannello convive quindi con un riconoscimento completo della tipologia nel test. Il caso mostra come il massimo della mappa possa sostenere la decisione sull'immagine anche quando la regione difettosa emerge con un contrasto visivo limitato.
+CCW-SSIM riconosce tutte le 17 immagini \texttt{fold} alla soglia di massimo F1 immagini. Questo risultato è utile per interpretare la risposta diffusa osservata nel pannello: un contrasto visivo limitato della regione difettosa può convivere con il riconoscimento completo della tipologia nel test. Il massimo della mappa può infatti essere sufficiente a sostenere la decisione sull'immagine.
 
 \begin{figure}[htbp]
 \centering
@@ -253,7 +253,7 @@ CCW-SSIM omette una delle 18 immagini \texttt{poke} alla soglia globale scelta, 
 
 Il campione \texttt{good/030.png} è l'immagine normale con il massimo punteggio CCW-SSIM. La maschera di riferimento è vuota. La mappa CCW-SSIM contiene risposte diffuse alla tessitura e picchi locali: il massimo supera la soglia di classificazione e rende questa immagine uno dei nove falsi positivi del modello.
 
-Anche le altre pipeline producono mappe non uniformi su questa immagine normale, ma i rispettivi punteggi rimangono al di sotto delle soglie globali di massimo F1 immagini. Per CCW-SSIM, invece, il picco determina una segnalazione errata. Il caso collega così la risposta alla tessitura alla scelta di aggregare la mappa mediante massimo e motiva un possibile approfondimento su aggregazioni alternative, il cui beneficio rimane da verificare.
+Anche le altre pipeline producono mappe non uniformi su questa immagine normale, ma i rispettivi punteggi rimangono al di sotto delle soglie globali di massimo F1 immagini. Per CCW-SSIM, invece, il picco determina una segnalazione errata. Da questo caso emerge una domanda per un successivo approfondimento: aggregazioni alternative al massimo potrebbero ridurre le segnalazioni legate alla risposta sulla tessitura? Il loro beneficio rimane da verificare.
 
 \begin{figure}[htbp]
 \centering
@@ -273,7 +273,7 @@ La lettura delle figure è coerente con due risultati complessivi: i metodi basa
 \section{Confronto con le pubblicazioni di riferimento}
 \label{sec:cap4-letteratura}
 
-Le metriche e gli esempi visivi delineano il comportamento delle pipeline nel caso di studio. Per metterlo in relazione con le proposte originali, occorre confrontare sia i valori pubblicati sia le condizioni in cui sono stati ottenuti. Si considerano quindi i risultati di \texttt{leather}, quando disponibili, mantenendoli distinti dalle medie sulle quindici categorie di MVTec AD.
+Dopo aver esaminato metriche e mappe, il passo successivo è mettere i risultati in relazione con le proposte originali. Nel confronto con le fonti considero sia i valori pubblicati sia le condizioni in cui sono stati ottenuti. Il riferimento è costituito dai risultati di \texttt{leather}, quando disponibili, mantenuti distinti dalle medie sulle quindici categorie di MVTec AD.
 
 La Tabella~\ref{tab:cap4-paper} affianca i risultati locali ai valori pubblicati per le metriche con una corrispondenza nominale. Gli scarti sono espressi in punti percentuali e sono soltanto descrittivi: la tabella non presuppone identità dei protocolli. CCW-SSIM viene discusso separatamente, poiché la diversa definizione dell'area impedisce di riportare uno scarto equivalente.
 
@@ -341,14 +341,14 @@ La previsione su patch da $256\times256$ con stride 16 è allineata alla procedu
 
 \subsection{Interpretazione degli scostamenti}
 
-Il confronto distingue tre livelli di evidenza. Il primo è il risultato misurato: per PaDiM gli scarti sono piccoli, per RD4AD emerge soprattutto una differenza nel PRO e per FastFlow le AUROC sono in linea o lievemente superiori ai valori riportati. Il secondo comprende le differenze documentate, come il preprocessing di PaDiM, il regime di addestramento di FastFlow e la metrica della fonte CCW-SSIM. Il terzo comprende le ipotesi esplicative, tra cui la sensibilità del PRO ai bordi e la variabilità delle esecuzioni. Soltanto i primi due livelli sono verificati dal materiale disponibile; il terzo richiede prove dedicate.
+Per interpretare gli scostamenti, distinguo tre livelli di evidenza. Il primo è il risultato misurato: per PaDiM gli scarti sono piccoli, per RD4AD emerge soprattutto una differenza nel PRO e per FastFlow le AUROC sono in linea o lievemente superiori ai valori riportati. Il secondo comprende le differenze documentate, come il preprocessing di PaDiM, il regime di addestramento di FastFlow e la metrica della fonte CCW-SSIM. Il terzo comprende le ipotesi esplicative, tra cui la sensibilità del PRO ai bordi e la variabilità delle esecuzioni. Soltanto i primi due livelli sono verificati dal materiale disponibile; per il terzo servono prove dedicate.
 
 La consistenza del confronto interno è sostenuta anche dal ricalcolo completo delle mappe archiviate: per ciascuna pipeline sono confermate le tre aree principali e tredici valori aggiuntivi relativi a F1, soglie, precisione, richiamo e scala dei punteggi, senza differenze numeriche rispetto ai file di risultato. Questa verifica collega le metriche ai dati e al valutatore comuni. Il rapporto con le fonti rimane invece condizionato dalle differenze documentate: il protocollo regionale di RD4AD, le condizioni di apprendimento e le misure di efficienza di FastFlow e la variante cromatica locale di CCW-SSIM.
 
 \section{Limiti e portata dei risultati}
 \label{sec:cap4-limiti}
 
-Il perimetro sperimentale consente di approfondire un materiale attraverso cinque tipologie di difetto. Le conclusioni riguardano quindi \texttt{leather}; una valutazione su altre categorie sarebbe necessaria per esaminare la generalizzazione a materiali e oggetti differenti.
+La scelta di un unico materiale consente di approfondire cinque tipologie di difetto, ma circoscrive anche le conclusioni a \texttt{leather}. Per estenderle a materiali e oggetti differenti sarebbe necessaria una valutazione su altre categorie.
 
 La stabilità delle differenze osservate richiede inoltre repliche. Una sola esecuzione per pipeline non quantifica la variabilità rispetto al seme pseudo-casuale o all'addestramento e non permette di stabilire una superiorità statisticamente significativa. Anche i pixel di una stessa immagine sono correlati: la loro numerosità non equivale a un insieme altrettanto ampio di osservazioni indipendenti.
 
@@ -358,8 +358,8 @@ Infine, l'analisi qualitativa si basa su pochi campioni scelti con criteri espli
 
 \section{Discussione complessiva}
 
-Nel caso di studio esaminato, PaDiM, RD4AD e FastFlow separano completamente le immagini normali da quelle difettose. La localizzazione mostra invece differenze: FastFlow ottiene i valori più alti delle metriche considerate, RD4AD segue con prestazioni prossime e PaDiM mantiene risultati elevati con il costo di adattamento più contenuto. Le mappe rendono visibile che il riconoscimento corretto dell'immagine può convivere con risposte più estese del difetto.
+Il primo risultato da considerare è la separazione completa delle immagini normali e difettose ottenuta da PaDiM, RD4AD e FastFlow nel caso di studio. Per confrontare i tre modelli occorre però guardare anche alla localizzazione: FastFlow ottiene i valori più alti delle metriche considerate, RD4AD segue con prestazioni prossime e PaDiM mantiene risultati elevati con il costo di adattamento più contenuto. Le mappe aiutano a interpretare questa distinzione: il riconoscimento corretto dell'immagine può convivere con risposte più estese del difetto.
 
 CCW-SSIM presenta un costo di apprendimento maggiore, una separazione delle immagini meno efficace e una copertura regionale inferiore. Individua comunque 84 delle 92 immagini difettose alla soglia di massimo F1. Le omissioni e il campione normale analizzato indicano che la relazione tra risposta alla texture, aggregazione del punteggio e localizzazione merita attenzione, senza che gli esperimenti disponibili consentano di isolare il contributo di ciascun fattore.
 
-Il confronto con le fonti colloca questi risultati nel contesto delle configurazioni e delle metriche adottate. Le differenze documentate aiutano a delimitare il riscontro numerico, mentre le spiegazioni causali richiedono esperimenti dedicati. Su questa base, il Capitolo~\ref{chap:conclusioni} ricompone le risposte agli obiettivi iniziali e propone gli approfondimenti necessari per sviluppare il lavoro.
+Il confronto con le fonti permette di leggere questi risultati nel contesto delle configurazioni e delle metriche adottate. Le differenze documentate delimitano il significato del riscontro numerico; per spiegare le cause degli scarti occorrono esperimenti dedicati. A partire da queste osservazioni, nel Capitolo~\ref{chap:conclusioni} torno agli obiettivi iniziali e discuto gli approfondimenti necessari per sviluppare il lavoro.

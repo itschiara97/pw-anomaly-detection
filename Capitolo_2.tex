@@ -3,7 +3,7 @@
 
 Definiti il problema e i criteri di valutazione, occorre esaminare i metodi con cui apprendere la normalità visiva e riconoscerne le deviazioni. Nell'ispezione industriale, l'obiettivo è riconoscere difetti anche quando non sono disponibili esempi rappresentativi di tutte le anomalie possibili \cite{Yang_et_al._2021,Cui_et_al._2023}.
 
-Le applicazioni comprendono il controllo di qualità, l'analisi di immagini mediche e il rilevamento di eventi nei video. Questi ambiti condividono il problema della scarsità delle anomalie, ma differiscono per dati, vincoli e modalità di valutazione. La rassegna seguente privilegia l'ispezione di immagini industriali, che costituisce il dominio della sperimentazione.
+Le applicazioni comprendono il controllo di qualità, l'analisi di immagini mediche e il rilevamento di eventi nei video. Questi ambiti condividono il problema della scarsità delle anomalie, ma differiscono per dati, vincoli e modalità di valutazione. Nella rassegna ho privilegiato l'ispezione di immagini industriali, per mantenere il riferimento al dominio della sperimentazione.
 
 \section{Criteri di classificazione dei metodi}
 
@@ -63,7 +63,7 @@ L'alta dimensionalità e le variazioni di illuminazione o texture possono render
 
 Le reti profonde permettono di apprendere descrittori multilivello e di combinare informazione locale e rappresentazioni più astratte. Alcuni metodi addestrano una rete sul dominio industriale; altri utilizzano un estrattore pre-addestrato e stimano soltanto un modello delle feature normali.
 
-Le sezioni seguenti presentano cinque famiglie utili a inquadrare i quattro modelli selezionati. La sintesi evidenzia sia i principi condivisi sia le differenze che dovranno essere considerate nel confronto sperimentale \cite{Cui_et_al._2023}.
+Per inquadrare i quattro modelli selezionati, le sezioni seguenti presentano cinque famiglie. Nella lettura della letteratura, l'attenzione è rivolta sia ai principi condivisi sia alle differenze da considerare nel confronto sperimentale \cite{Cui_et_al._2023}.
 
 \subsection{Metodi basati sulla ricostruzione}
 
@@ -89,7 +89,7 @@ Qui $G$ è il generatore e $D_{\mathrm{feat}}$ indica una rappresentazione inter
 
 Tra gli sviluppi della famiglia, CAVGA introduce vincoli di attenzione, mentre DFR (\textit{Deep Feature Reconstruction}) ricostruisce rappresentazioni estratte da una rete pre-addestrata anziché direttamente i pixel. La ricostruzione può quindi operare in spazi differenti e sovrapporsi ad altri approcci della tassonomia \cite{Cui_et_al._2023}.
 
-CCW-SSIM, selezionato per il progetto, appartiene a questa famiglia: combina la ricostruzione mediante autoencoder con una valutazione della discrepanza strutturale e cromatica \cite{Berasi_2023}. Il suo interesse per il confronto consiste nell'apprendere direttamente dai campioni industriali senza utilizzare un backbone ImageNet.
+CCW-SSIM, selezionato per il progetto, appartiene a questa famiglia: combina la ricostruzione mediante autoencoder con una valutazione della discrepanza strutturale e cromatica \cite{Berasi_2023}. Per il confronto è rilevante che apprenda direttamente dai campioni industriali senza utilizzare un backbone ImageNet.
 
 \subsection{Metodi basati sulle rappresentazioni}
 
@@ -195,7 +195,7 @@ La Tabella~\ref{tab:metodi_ad} riassume i principi e i limiti delle famiglie dis
     \end{tabularx}
 \end{table}
 
-I quattro modelli selezionati condividono l'adattamento sui soli campioni normali, ma differiscono nello spazio in cui descrivono la normalità e nel criterio con cui ne misurano le deviazioni. Queste differenze motivano un confronto che consideri insieme discriminazione globale, localizzazione e comportamento delle mappe.
+I quattro modelli selezionati condividono l'adattamento sui soli campioni normali, ma differiscono nello spazio in cui descrivono la normalità e nel criterio con cui ne misurano le deviazioni. A partire da queste differenze, ho impostato il confronto considerando insieme discriminazione globale, localizzazione e comportamento delle mappe.
 
 \section{Sfide aperte e limiti di applicazione}
 
@@ -225,4 +225,4 @@ Quando è difficile raccogliere campioni normali specifici del prodotto, gli app
 
 Il framework DCS esplora, ad esempio, l'integrazione di DINO, CLIP e SAM per il rilevamento e la segmentazione \cite{Wan_et_al._2026}. Queste possibilità ampliano il quadro della ricerca, ma richiedono valutazioni specifiche della precisione locale e dei costi. Non fanno parte dei metodi sperimentati nel presente lavoro.
 
-La rassegna conduce quindi a una domanda circoscritta: come si comportano quattro diverse pipeline one-class quando sono adattate e valutate sullo stesso caso di studio? Il capitolo seguente documenta le configurazioni necessarie a rendere esplicite le condizioni di tale confronto.
+La domanda da portare nella sperimentazione è quindi circoscritta: come si comportano quattro diverse pipeline one-class quando sono adattate e valutate sullo stesso caso di studio? Per affrontarla, nel capitolo seguente descrivo le configurazioni utilizzate e le condizioni del confronto.

@@ -1,14 +1,14 @@
 \chapter[Modelli selezionati e implementazione]{Modelli selezionati e implementazione sperimentale}
 \label{chap:implementazione}
 
-Le famiglie presentate nello stato dell'arte descrivono modi differenti di apprendere la normalità e riconoscere le anomalie. Per confrontarle sul caso di studio occorre tradurre questi principi in pipeline concrete, definendo come vengono elaborate le immagini, quali componenti apprendono dai campioni normali e come viene costruita la mappa di anomalia. Il capitolo sviluppa questo passaggio attraverso i quattro modelli selezionati: \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow}.
+Il passaggio dallo stato dell'arte alla sperimentazione richiede di tradurre i diversi modi di apprendere la normalità in pipeline concrete. Per rendere leggibile il confronto, descrivo come vengono elaborate le immagini, quali componenti apprendono dai campioni normali e come viene costruita la mappa di anomalia. Questo percorso riguarda i quattro modelli selezionati: \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow}.
 
 Il punto di partenza comune è costituito dalle immagini di \textbf{MVTec AD}, impiegate per l'adattamento al dominio industriale e per il test. Le rappresentazioni iniziali hanno invece una provenienza diversa: PaDiM, RD4AD e FastFlow utilizzano backbone con pesi pre-addestrati su \textbf{ImageNet}, mentre CCW-SSIM apprende da zero sui campioni normali del materiale. Questa differenza aiuta a comprendere sia le procedure di apprendimento sia i costi delle configurazioni adottate.
 
 \section{Criteri di selezione e ruolo dei modelli}
 \label{sec:cap3-criteri}
 
-La scelta dei modelli permette di esaminare quattro famiglie metodologiche discusse nel Capitolo~\ref{chap:stato-arte}:
+Ho selezionato i modelli in modo da confrontare quattro famiglie metodologiche discusse nel Capitolo~\ref{chap:stato-arte}:
 \begin{itemize}
     \item \textbf{CCW-SSIM} \cite{Berasi_2023} appartiene ai metodi basati sulla ricostruzione. Un autoencoder apprende a riprodurre i campioni normali e la discrepanza tra immagine originale e ricostruita è valutata considerando congiuntamente struttura e colore;
     \item \textbf{PaDiM} \cite{Defard_et_al._2021} è un metodo basato sulla rappresentazione. Le feature estratte da una rete pre-addestrata sono modellate, per ciascuna posizione spaziale, mediante una distribuzione gaussiana multivariata;
@@ -20,7 +20,7 @@ I quattro approcci rappresentano pertanto modalità differenti di costruire un m
 
 L'implementazione adotta lo scenario \textit{one-class} definito nel Capitolo~\ref{chap:introduzione}: la fase di adattamento utilizza esclusivamente immagini prive di difetti. Le immagini normali e anomale della partizione di test sono elaborate nella successiva fase di inferenza; le etichette e le maschere dei difetti sono utilizzate per la valutazione, secondo il protocollo illustrato nel capitolo dedicato ai risultati.
 
-All'interno di questo scenario, l'apprendimento assume forme diverse. CCW-SSIM, RD4AD e FastFlow ottimizzano parametri neurali; PaDiM stima le statistiche gaussiane delle feature normali mantenendo congelato il backbone. Il confronto comprende quindi sia modelli con addestramento iterativo sia un approccio di adattamento statistico. Prima di descriverli singolarmente, è utile chiarire i dati e l'organizzazione sperimentale che condividono.
+All'interno di questo scenario, l'apprendimento assume forme diverse. CCW-SSIM, RD4AD e FastFlow ottimizzano parametri neurali; PaDiM stima le statistiche gaussiane delle feature normali mantenendo congelato il backbone. Nel confronto considero quindi sia modelli con addestramento iterativo sia un approccio di adattamento statistico. Prima di entrare nelle singole implementazioni, è utile chiarire i dati e l'organizzazione sperimentale comuni.
 
 \section{Ambiente e protocollo implementativo comune}
 \label{sec:cap3-ambiente}
@@ -171,7 +171,7 @@ Le immagini sono ridimensionate a $224\times224$ e normalizzate con media e devi
 
 Le feature allineate costituiscono la rappresentazione sulla quale viene stimata la normalità. La concatenazione completa produce 1792 canali; per contenere la dimensionalità statistica, l'implementazione seleziona deterministicamente 550 indici di canale mediante \texttt{torch.randperm} con seme 1024. Non viene applicata una proiezione casuale: il sottoinsieme è composto direttamente dai canali selezionati e i relativi indici sono salvati insieme alle statistiche.
 
-Le immagini normali sono elaborate in batch da 32, con due processi di caricamento e ordine non mescolato. La procedura esegue un unico passaggio sul insieme di addestramento, calcola media e covarianza per ogni posizione e aggiunge $0{,}01I$ alla covarianza prima dell'inversione. Non sono presenti ottimizzatore o epoche di aggiornamento dei pesi. Le medie, le inverse delle covarianze e gli indici dei canali sono serializzati in un file \texttt{pickle}.
+Le immagini normali sono elaborate in batch da 32, con due processi di caricamento e ordine non mescolato. La procedura esegue un unico passaggio sull'insieme di addestramento, calcola media e covarianza per ogni posizione e aggiunge $0{,}01I$ alla covarianza prima dell'inversione. Non sono presenti ottimizzatore o epoche di aggiornamento dei pesi. Le medie, le inverse delle covarianze e gli indici dei canali sono serializzati in un file \texttt{pickle}.
 
 \subsection{Costruzione della mappa di anomalia}
 
@@ -276,7 +276,7 @@ I checkpoint PTH contengono i parametri delle normalizzazioni e dei flussi, ment
 \section{Sintesi delle configurazioni implementative}
 \label{sec:cap3-sintesi}
 
-Le descrizioni dei modelli mostrano come uno stesso insieme di immagini normali possa guidare procedure di apprendimento differenti. La Tabella~\ref{tab:cap3-configurazioni} raccoglie le configurazioni adottate, mettendo in relazione rappresentazione iniziale, dimensione dell’input e adattamento al caso di studio.
+A questo punto è possibile mettere a confronto le procedure con cui i modelli apprendono dallo stesso insieme di immagini normali. La Tabella~\ref{tab:cap3-configurazioni} raccoglie le configurazioni adottate, mettendo in relazione rappresentazione iniziale, dimensione dell’input e adattamento al caso di studio.
 
 \begin{table}[htbp]
     \centering
@@ -300,4 +300,4 @@ Le descrizioni dei modelli mostrano come uno stesso insieme di immagini normali 
 
 Le differenze di risoluzione, rappresentazione e ottimizzazione sono parte delle condizioni del confronto. CCW-SSIM apprende la ricostruzione dell’immagine, PaDiM stima distribuzioni locali, RD4AD ricostruisce le feature del Teacher e FastFlow ne apprende trasformazioni invertibili. Tutte le pipeline producono infine mappe riferite alle immagini del medesimo insieme di test, sulle quali viene applicato il protocollo comune di valutazione.
 
-Il capitolo seguente esamina quanto queste mappe permettano di distinguere immagini normali e difettose e di localizzare le anomalie. Il confronto quantitativo sarà affiancato dalla lettura degli esempi visivi, per mettere in relazione le prestazioni complessive con risposte incomplete, diffuse o presenti nelle regioni normali. Le differenze implementative qui descritte forniranno il contesto per interpretare gli esiti, mantenendo distinte le osservazioni dalle ipotesi sulle loro cause.
+Su queste mappe si basa l'analisi del capitolo seguente: quanto permettono di distinguere immagini normali e difettose e di localizzare le anomalie? Alla lettura delle metriche affianco gli esempi visivi, per collegare le prestazioni complessive alle risposte incomplete, diffuse o presenti nelle regioni normali. Nell'interpretare gli esiti tengo conto delle differenze implementative descritte, distinguendo le osservazioni dalle ipotesi sulle loro cause.
