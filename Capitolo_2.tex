@@ -1,7 +1,7 @@
 \chapter{Stato dell'arte}
 \label{chap:stato-arte}
 
-La visual anomaly detection comprende metodi che individuano deviazioni rispetto al comportamento visivo atteso. Nell'ispezione industriale, l'obiettivo è riconoscere difetti anche quando non sono disponibili esempi rappresentativi di tutte le anomalie possibili \cite{Yang_et_al._2021,Cui_et_al._2023}.
+Definiti il problema e i criteri di valutazione, occorre esaminare i metodi con cui apprendere la normalità visiva e riconoscerne le deviazioni. Nell'ispezione industriale, l'obiettivo è riconoscere difetti anche quando non sono disponibili esempi rappresentativi di tutte le anomalie possibili \cite{Yang_et_al._2021,Cui_et_al._2023}.
 
 Le applicazioni comprendono il controllo di qualità, l'analisi di immagini mediche e il rilevamento di eventi nei video. Questi ambiti condividono il problema della scarsità delle anomalie, ma differiscono per dati, vincoli e modalità di valutazione. La rassegna seguente privilegia l'ispezione di immagini industriali, che costituisce il dominio della sperimentazione.
 
@@ -18,7 +18,7 @@ Questi criteri non sono intercambiabili. Un'architettura non determina da sola i
 
 \subsection{Granularità dell'output e supervisione}
 
-Il rilevamento \textit{image-level} produce un punteggio per l'intera immagine; la localizzazione \textit{pixel-level} produce una mappa spaziale. Una segmentazione binaria può essere ottenuta applicando una soglia alla mappa. L'esistenza di un output spaziale non implica che il modello sia stato addestrato usando maschere dei difetti.
+Il rilevamento a livello di immagine produce un punteggio per l'intera immagine; la localizzazione a livello di pixel produce una mappa spaziale. Una segmentazione binaria può essere ottenuta applicando una soglia alla mappa. L'esistenza di un output spaziale non implica che il modello sia stato addestrato usando maschere dei difetti.
 
 Come definito nel Capitolo~\ref{chap:introduzione}, il progetto adotta uno scenario \textit{one-class}: i campioni industriali utilizzati per l'adattamento sono tutti normali. Le maschere del test sono impiegate nella valutazione. I modelli possono comunque utilizzare rappresentazioni pre-addestrate su altri dataset. Altri metodi one-class introducono anomalie sintetiche per costruire compiti auto-supervisionati; questa procedura non è utilizzata dalle quattro pipeline sperimentate.
 
@@ -85,7 +85,7 @@ Nei modelli generativi come AnoGAN, la ricerca della ricostruzione più vicina p
     +\lambda\lVert D_{\mathrm{feat}}(x)
     -D_{\mathrm{feat}}(G(z))\rVert_1.
 \]
-Qui $G$ è il generatore e $D_{\mathrm{feat}}$ indica una rappresentazione intermedia del discriminatore. La formula corrisponde alla variante di AnoGAN con \textit{feature matching}, nelle equazioni 3--5 della fonte originale \cite{Schlegl_et_al._2017}.
+Qui $G$ è il generatore e $D_{\mathrm{feat}}$ indica una rappresentazione intermedia del discriminatore \cite{Schlegl_et_al._2017}.
 
 Tra gli sviluppi della famiglia, CAVGA introduce vincoli di attenzione, mentre DFR (\textit{Deep Feature Reconstruction}) ricostruisce rappresentazioni estratte da una rete pre-addestrata anziché direttamente i pixel. La ricostruzione può quindi operare in spazi differenti e sovrapporsi ad altri approcci della tassonomia \cite{Cui_et_al._2023}.
 
@@ -93,7 +93,7 @@ CCW-SSIM, selezionato per il progetto, appartiene a questa famiglia: combina la 
 
 \subsection{Metodi basati sulle rappresentazioni}
 
-Questi metodi descrivono i campioni mediante feature, spesso estratte da reti pre-addestrate. Il punteggio di anomalia deriva dal confronto con feature normali conservate in memoria oppure con statistiche stimate su di esse \cite{Cui_et_al._2023}.
+Questi metodi descrivono i campioni mediante vettori di caratteristiche, indicati come \textit{feature}, spesso estratte da reti pre-addestrate. Il punteggio di anomalia deriva dal confronto con feature normali conservate in memoria oppure con statistiche stimate su di esse \cite{Cui_et_al._2023}.
 
 La famiglia comprende approcci con estrattore congelato e varianti che adattano le rappresentazioni al dominio. Non è quindi corretto attribuire a tutti l'assenza di addestramento neurale.
 
@@ -211,7 +211,7 @@ L'adattamento delle feature può ridurre questa distanza, ma richiede di verific
 
 L'esecuzione su dispositivi periferici può imporre vincoli di memoria, latenza ed energia, discussi sia per l'ispezione visiva industriale sia, più in generale, per le reti IoT \cite{Li_et_al._2025,Morshedi_et_al._2025}. Il costo dipende dall'estrattore, dalla risoluzione, dai componenti addestrabili e dal trattamento delle mappe.
 
-Nei metodi con memory bank, la selezione di un coreset limita la quantità di feature conservate, ma la consultazione dei riferimenti rimane parte dell'inferenza \cite{Roth_et_al._2022}. Nei modelli neurali, il costo dell'addestramento deve essere distinto dal tempo di predizione. Per questo, un tempo di training basso non dimostra da solo l'idoneità a operare in tempo reale.
+Nei metodi con memory bank, la selezione di un coreset limita la quantità di feature conservate, ma la consultazione dei riferimenti rimane parte dell'inferenza \cite{Roth_et_al._2022}. Nei modelli neurali, il costo dell'addestramento deve essere distinto dal tempo di predizione. Per questo, un tempo di addestramento basso non dimostra da solo l'idoneità a operare in tempo reale.
 
 \subsection{Cambiamenti del dominio e apprendimento continuo}
 

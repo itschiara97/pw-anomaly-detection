@@ -1,7 +1,7 @@
-\chapter{Introduzione e definizione del problema}
+\chapter[Definizione del problema]{Il rilevamento delle anomalie: definizione del problema}
 \label{chap:introduzione}
 
-L'\textbf{anomaly detection}, o rilevamento delle anomalie, consiste nell'identificare osservazioni che si discostano significativamente dal comportamento prevalente dei dati. Tali deviazioni possono suggerire la presenza di un meccanismo generativo differente e, nei contesti applicativi, segnalare eventi che richiedono un approfondimento \cite{Pang_et_al._2021}.
+Le difficoltà dell'ispezione visiva richiamate nell'introduzione possono essere inquadrate attraverso il problema del rilevamento delle anomalie. L'\textbf{anomaly detection}, o rilevamento delle anomalie, consiste nell'identificare osservazioni che si discostano significativamente dal comportamento prevalente dei dati. Tali deviazioni possono suggerire la presenza di un meccanismo generativo differente e, nei contesti applicativi, segnalare eventi che richiedono un approfondimento \cite{Pang_et_al._2021}.
 
 La difficoltà del problema dipende soprattutto da tre caratteristiche:
 \begin{itemize}
@@ -51,9 +51,9 @@ Nelle linee di produzione efficienti, i difetti possono essere sporadici. Un cla
 
 \subsubsection{Variabilità ed eterogeneità delle anomalie}
 
-I difetti possono differire per forma, dimensione, posizione e contrasto rispetto al materiale. Non è quindi realistico assumere di poter rappresentare tutte le loro configurazioni nel training set. Il modello deve distinguere le variazioni compatibili con il prodotto conforme dalle deviazioni significative, generalizzando oltre gli esempi osservati \cite{Aggarwal_et_al._2021,Cui_et_al._2023}.
+I difetti possono differire per forma, dimensione, posizione e contrasto rispetto al materiale. Non è quindi realistico assumere di poter rappresentare tutte le loro configurazioni nell' insieme di addestramento. Il modello deve distinguere le variazioni compatibili con il prodotto conforme dalle deviazioni significative, generalizzando oltre gli esempi osservati \cite{Aggarwal_et_al._2021,Cui_et_al._2023}.
 
-La Figura~\ref{fig:variabilita_anomalia} illustra, mediante una serie temporale, la distinzione generale tra anomalie puntuali, contestuali e collettive. Nell'ispezione visiva, l'eterogeneità si manifesta invece attraverso alterazioni cromatiche, discontinuità della texture o modifiche della struttura dell'oggetto.
+La Figura~\ref{fig:variabilita_anomalia} illustra, mediante una serie temporale, la distinzione generale tra anomalie puntuali, contestuali e collettive. Nell'ispezione visiva, l'eterogeneità si manifesta invece attraverso alterazioni cromatiche, discontinuità della tessitura (\textit{texture}) o modifiche della struttura dell'oggetto.
 
 \begin{figure}[htbp]
     \centering
@@ -75,9 +75,12 @@ I confini tra variazione normale e difetto possono dunque essere ambigui. Il pre
     \label{fig:contesto_industriale}
 \end{figure}
 
+
+
+
 \subsection{Paradigmi di apprendimento e convenzione terminologica}
 
-La disponibilità delle etichette determina quali informazioni possano guidare l'apprendimento. È utile distinguere il paradigma generale dalla granularità delle annotazioni e dalla specifica composizione del training set \cite{Yang_et_al._2021}.
+La disponibilità delle etichette determina quali informazioni possano guidare l'apprendimento. È utile distinguere il paradigma generale dalla granularità delle annotazioni e dalla specifica composizione dell' insieme di addestramento \cite{Yang_et_al._2021}.
 
 \subsubsection{Apprendimento supervisionato}
 
@@ -95,11 +98,11 @@ L'assenza di annotazioni riduce il costo di preparazione dei dati, ma non garant
 
 \subsubsection{Apprendimento dai soli campioni normali}
 
-Una terza impostazione utilizza un training set composto esclusivamente da campioni noti come normali, senza esempi delle anomalie da rilevare. Nella tassonomia generale dell'anomaly detection, questa impostazione è spesso denominata \textit{semi-supervisionata} \cite{Perez_et_al._2021}. I metodi costruiscono una descrizione della classe normale attraverso confini decisionali, distribuzioni statistiche o rappresentazioni neurali.
+Una terza impostazione utilizza un insieme di addestramento composto esclusivamente da campioni noti come normali, senza esempi delle anomalie da rilevare. Nella tassonomia generale dell'anomaly detection, questa impostazione è spesso denominata \textit{semi-supervisionata} \cite{Perez_et_al._2021}. I metodi costruiscono una descrizione della classe normale attraverso confini decisionali, distribuzioni statistiche o rappresentazioni neurali.
 
 Nella letteratura sull'ispezione visiva industriale, lo stesso scenario è comunemente indicato come \textit{unsupervised anomaly detection}, poiché l'apprendimento non richiede esempi annotati dei difetti \cite{Cui_et_al._2023}. Per evitare ambiguità, nel presente elaborato si usa l'espressione \textbf{scenario one-class}: l'adattamento al dominio avviene sui soli campioni normali, mentre le etichette e le maschere del test sono riservate alla valutazione.
 
-Questa convenzione si applica a tutti i modelli selezionati. L'eventuale uso di un backbone pre-addestrato su ImageNet riguarda la provenienza della rappresentazione iniziale e deve essere distinto dalle informazioni impiegate nell'adattamento al dominio industriale.
+Questa convenzione si applica a tutti i modelli selezionati. L'eventuale uso di una rete che estrae vettori di caratteristiche (\textit{feature}), detta \textit{backbone}, pre-addestrato su ImageNet riguarda la provenienza della rappresentazione iniziale e deve essere distinto dalle informazioni impiegate nell'adattamento al dominio industriale.
 
 \section{Il benchmark MVTec AD e le metriche di valutazione}
 
@@ -143,7 +146,7 @@ A livello di immagine, il calcolo richiede un punteggio globale per ciascun camp
 
 \subsubsection{AUROC a livello di pixel}
 
-L'AUROC a livello di pixel confronta i punteggi della mappa con le annotazioni della ground truth. La metrica valuta l'ordinamento dei pixel normali e anomali, ma non descrive direttamente la precisione dei contorni o la copertura di ciascun difetto.
+L'AUROC a livello di pixel confronta i punteggi della mappa con le maschere di riferimento (\textit{ground truth}). La metrica valuta l'ordinamento dei pixel normali e anomali, ma non descrive direttamente la precisione dei contorni o la copertura di ciascun difetto.
 
 Poiché TPR e FPR sono normalizzati sulle rispettive classi, il predominio numerico dei pixel normali non equivale, da solo, a un aumento dell'AUROC. Rimangono però limiti interpretativi: il raggruppamento dei pixel attribuisce maggiore peso alle anomalie estese e l'integrazione sull'intera curva può nascondere un comportamento insoddisfacente ai bassi FPR rilevanti per l'ispezione industriale \cite{Bertoldo_et_al._2024}. Per questo l'AUROC deve essere affiancata da misure complementari e dall'esame delle mappe.
 
@@ -161,16 +164,16 @@ Il punteggio F1 combina precisione e richiamo:
     \frac{2\,\mathrm{precision}\,\mathrm{recall}}
     {\mathrm{precision}+\mathrm{recall}}.
 \]
-Nei risultati del progetto, il massimo F1 è ottenuto scegliendo la soglia sul test set e costituisce quindi una misura retrospettiva \textit{oracle}. Non rappresenta una prestazione operativa con soglia selezionata su dati indipendenti. Il calcolo pixel-level è inoltre approssimato mediante campionamento spaziale con stride 4 e una griglia di 500 soglie.
+Nei risultati del progetto, il massimo F1 è ottenuto scegliendo la soglia sull' insieme di test e costituisce quindi una misura retrospettiva \textit{oracle}. Non rappresenta una prestazione operativa con soglia selezionata su dati indipendenti. Il calcolo a livello di pixel è inoltre approssimato mediante campionamento spaziale con passo 4 e una griglia di 500 soglie.
 
 L'analisi qualitativa completa questi indicatori confrontando immagini, maschere e mappe. Permette di osservare localizzazioni incomplete, risposte diffuse e attivazioni su regioni normali, distinguendo i comportamenti visibili dalle ipotesi sulle loro cause.
 
 \section{Obiettivi e struttura dell'elaborato}
 
-Il lavoro analizza in modo comparativo quattro pipeline di rilevamento delle anomalie visive industriali: \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow}. I modelli rappresentano approcci differenti alla costruzione della normalità: ricostruzione dell'immagine, modellazione statistica delle feature, distillazione della conoscenza e flussi di normalizzazione.
+Il lavoro analizza in modo comparativo quattro pipeline, cioè procedure che comprendono elaborazione delle immagini, adattamento del modello e inferenza, per il rilevamento delle anomalie visive industriali: \textbf{CCW-SSIM}, \textbf{PaDiM}, \textbf{RD4AD} e \textbf{FastFlow}. I modelli rappresentano approcci differenti alla costruzione della normalità: ricostruzione dell'immagine, modellazione statistica delle feature, distillazione della conoscenza e flussi di normalizzazione.
 
 Il perimetro sperimentale è circoscritto alla categoria \texttt{leather} di MVTec AD, assunta come unico caso di studio. Il confronto riguarda le implementazioni e le configurazioni adottate, con dati e protocollo di valutazione condivisi. Le differenze di risoluzione, pre-addestramento e regime di apprendimento sono parte dell'interpretazione dei risultati; il confronto non isola l'effetto della sola famiglia metodologica.
 
-Gli obiettivi sono valutare la discriminazione delle immagini e la localizzazione dei difetti, esaminare qualitativamente le mappe e discutere i costi osservati e i limiti delle pipeline. L'estensione ad altre categorie e le prove dedicate a colore, illuminazione o fine-tuning costituiscono possibili approfondimenti, da distinguere dagli esperimenti già documentati.
+Su questa base, gli obiettivi sono valutare la discriminazione delle immagini e la localizzazione dei difetti, esaminare qualitativamente le mappe e discutere i costi osservati e i limiti delle pipeline. L'estensione ad altre categorie e le prove dedicate a colore, illuminazione o adattamento dei pesi pre-addestrati (\textit{fine-tuning}) costituiscono possibili approfondimenti, da distinguere dagli esperimenti già documentati.
 
 Il Capitolo~\ref{chap:stato-arte} presenta lo stato dell'arte e i principi dei metodi selezionati. Il Capitolo~\ref{chap:implementazione} descrive le implementazioni e il protocollo comune. Il Capitolo~\ref{chap:risultati} analizza quantitativamente e qualitativamente i risultati, mettendoli in relazione con le fonti di riferimento. Il Capitolo~\ref{chap:conclusioni} sintetizza quanto emerso nel caso di studio e discute i limiti della ricerca e le possibili estensioni.
