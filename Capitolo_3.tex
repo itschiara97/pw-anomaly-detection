@@ -29,6 +29,8 @@ All'interno di questo scenario, l'apprendimento assume forme diverse. CCW-SSIM, 
 
 MVTec AD \cite{Bergmann_et_al._2019} raccoglie immagini industriali ad alta risoluzione, organizzate in categorie di oggetti e texture. Il repository conserva le quindici categorie del dataset; le configurazioni e i manifesti verificabili per i quattro modelli fanno tuttavia riferimento alla categoria \texttt{leather}.
 
+La pelle offre un caso di studio utile per il confronto: la sua trama naturale presenta variazioni locali anche nelle superfici normali, che i modelli devono distinguere dalle alterazioni dovute ai difetti. Concentrarsi su un unico materiale permette inoltre di esaminare diverse tipologie di anomalia nello stesso contesto visivo e di valutare le pipeline sulle medesime immagini e maschere. La scelta non deriva da una selezione comparativa documentata tra le categorie; le conclusioni sono pertanto riferite al caso di studio considerato.
+
 Per tale categoria, la partizione \texttt{train/good} contiene 245 immagini normali. La partizione di test contiene 124 immagini: 32 normali e 92 appartenenti alle tipologie di difetto \texttt{color}, \texttt{cut}, \texttt{fold}, \texttt{glue} e \texttt{poke}. Per le immagini difettose sono disponibili 92 maschere nella directory \texttt{ground\_truth}. La medesima organizzazione dei dati è condivisa da tutte le implementazioni.
 
 \subsection{Organizzazione del repository e pipeline di esecuzione}
