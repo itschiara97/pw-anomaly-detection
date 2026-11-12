@@ -15,7 +15,54 @@
 \usepackage{amssymb, amsfonts}
 \newunicodechar{┌}{|}
 
+% Dati del frontespizio.
+\newcommand{\nomemaster}{Analisi e Modellazione dei Dati e dei Processi: Metodi e Modelli}
+\newcommand{\titolotesi}{Analisi e confronto di tecniche di anomaly detection visiva basate sul deep learning per applicazioni industriali}
+\newcommand{\sottotitolotesi}{Un caso di studio sulla categoria leather del dataset MVTec AD}
+\newcommand{\candidata}{Chiara Lucia Oliveto}
+\newcommand{\matricola}{111674}
+\newcommand{\relatore}{Prof. Guido Maria D'Amely di Meledugno}
+\newcommand{\annoaccademico}{2025/2026}
+
 \begin{document}
+
+\begin{titlepage}
+\centering
+\includegraphics[width=0.36\textwidth]{figure/logo-unitelmasapienza.png}\par
+\vspace{0.8cm}
+{\large Master in\par}
+\vspace{0.3cm}
+{\Large\bfseries \nomemaster\par}
+\vfill
+{\large Project work finale\par}
+\vspace{0.5cm}
+{\LARGE\bfseries\centering \titolotesi\par}
+\vspace{0.6cm}
+{\large\itshape\centering \sottotitolotesi\par}
+\vfill
+\begin{minipage}[t]{0.48\textwidth}
+\raggedright
+\textbf{Relatore}\\
+\relatore
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\raggedleft
+\textbf{Candidata}\\
+\candidata\\
+Matricola \matricola
+\end{minipage}
+\vspace{2cm}
+
+{\large Anno accademico \annoaccademico\par}
+\end{titlepage}
+
+% L'indice comincia subito dopo il frontespizio, anche nella classe book.
+\begingroup
+\let\cleardoublepage\clearpage
+\setcounter{tocdepth}{1}
+\small
+\tableofcontents
+\endgroup
 
 \input{Introduzione}
 \input{Capitolo_1}
@@ -25,6 +72,8 @@
 \input{Capitolo_5}
 
 
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliografia}
 \bibliographystyle{plain}
 \bibliography{reference}
 \end{document}
