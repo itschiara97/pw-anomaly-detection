@@ -56,7 +56,16 @@ Matricola \matricola
 {\large Anno accademico \annoaccademico\par}
 \end{titlepage}
 
-% L'indice comincia subito dopo il frontespizio, anche nella classe book.
+\thispagestyle{empty}
+\vspace*{\fill}
+{\raggedleft\itshape
+Ai miei nonni,\\
+che per me hanno avuto sempre e solo occhi pieni di orgoglio.\par
+}
+\vspace*{\fill}
+\clearpage
+
+% L'indice comincia subito dopo la dedica, anche nella classe book.
 \begingroup
 \let\cleardoublepage\clearpage
 \setcounter{tocdepth}{1}
