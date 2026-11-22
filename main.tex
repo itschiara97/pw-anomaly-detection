@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass[oneside,openany]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
@@ -65,9 +65,7 @@ che per me hanno avuto sempre e solo occhi pieni di orgoglio.\par
 \vspace*{\fill}
 \clearpage
 
-% L'indice comincia subito dopo la dedica, anche nella classe book.
 \begingroup
-\let\cleardoublepage\clearpage
 \setcounter{tocdepth}{1}
 \small
 \tableofcontents
@@ -81,7 +79,7 @@ che per me hanno avuto sempre e solo occhi pieni di orgoglio.\par
 \input{Capitolo_5}
 
 
-\cleardoublepage
+\clearpage
 \addcontentsline{toc}{chapter}{Bibliografia}
 \bibliographystyle{plain}
 \bibliography{reference}
